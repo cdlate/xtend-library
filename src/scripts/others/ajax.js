@@ -9,7 +9,7 @@ import {Core} from '../core';
 // Drop
 //////////////////////
 
-export class Ajax extends Core {
+class Ajax extends Core {
 
   /**
    * constructor
@@ -357,3 +357,10 @@ Ajax.optionsDefault = {
   "instant": true,
   "aria": false
 };
+
+//////////////////////
+// export
+//////////////////////
+
+customElements.define(Ajax.componentName, Ajax);
+export {Ajax};

@@ -72,7 +72,7 @@ Custom **elements** and **targets**.
   </div>
 </demo>
 
-Custom targets classname that starts with `.toggle--`.
+Custom targets class that starts with `.toggle--`.
 
 <demo>
   <div class="demo_item" data-iframe="demos/docs/interaction/toggle/multiple-classes" data-name="classes">

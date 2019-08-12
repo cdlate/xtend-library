@@ -9,7 +9,7 @@ import {Core} from '../core';
 // Scroll
 //////////////////////
 
-export class Scroll extends Core {
+class Scroll extends Core {
 
   /**
    * constructor
@@ -297,3 +297,10 @@ Scroll.optionsDefault = {
   "fallback": 100,
   "aria": false
 };
+
+//////////////////////
+// export
+//////////////////////
+
+customElements.define(Scroll.componentName, Scroll);
+export {Scroll};

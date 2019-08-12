@@ -11,8 +11,8 @@ class Header extends React.Component {
     return (
       <header className="site_header">
 
-        <nav className="site_header_top_outer"
-             data-xt-sticky='{"sticky": "fixed"}'>
+        <xt-sticky className="site_header_top_outer"
+             options='{"sticky": "fixed"}'>
           <div className="site_header_top">
 
             <div className="row row-space--none site_header_top_row">
@@ -62,7 +62,7 @@ class Header extends React.Component {
             </div>
 
           </div>
-        </nav>
+        </xt-sticky>
 
       </header>
     )

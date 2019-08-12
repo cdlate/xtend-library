@@ -8,7 +8,7 @@ import {Xt} from './xtend';
 // Core
 //////////////////////
 
-export class Core {
+class Core extends HTMLElement {
 
   /**
    * constructor
@@ -17,11 +17,19 @@ export class Core {
    * @constructor
    */
   constructor(object, optionsJs = {}) {
+    super();
     let self = this;
-    self.object = object;
+    self.object = self;
     self.optionsJs = optionsJs;
     self.componentName = self.constructor.componentName;
     self.componentNamespace = self.componentName.replace(/^[^a-z]+|[ ,#_:.-]+/gi, '');
+  }
+
+  /**
+   * custom element inserted into the DOM
+   */
+  connectedCallback() {
+    let self = this;
     // @FIX ignore
     if (self.object.closest('.xt-ignore')) {
       if (Xt.debug === true) {
@@ -38,7 +46,16 @@ export class Core {
     }
     self.object.setAttribute('data-' + self.componentName + '-inited', 'true');
     // init
-    self.init(object, optionsJs);
+    self.init(self.object, self.optionsJs);
+  }
+
+  /**
+   * custom element removed from the DOM
+   */
+  disconnectedCallback() {
+    let self = this;
+    // destroy
+    self.destroy();
   }
 
   //////////////////////
@@ -118,7 +135,7 @@ export class Core {
     // js options
     self.options = Xt.merge([self.optionsDefault, self.optionsJs]);
     // markup options
-    let markupOptions = self.object.getAttribute('data-' + self.componentName);
+    let markupOptions = self.object.getAttribute('options');
     self.options = Xt.merge([self.options, markupOptions ? JSON.parse(markupOptions) : {}]);
     // classes
     self.classes = [...self.options.class.split(' ')];
@@ -235,7 +252,7 @@ export class Core {
       el.setAttribute('data-xt-namespace', self.namespace);
     }
     // automatic initial currents
-    let elements = self.getElementsSingle();
+    let elements = self.getGroupElements();
     if (elements.length) {
       // check elements
       for (let element of elements) {
@@ -472,7 +489,7 @@ export class Core {
     }
     // listener
     for (let tr of self.targets) {
-      let el = self.getTargets(tr)[0];
+      let el = self.getElements(tr).single;
       if (el) {
         // event
         let onHandler = Xt.dataStorage.get(el, options.on + '.' + self.namespace);
@@ -919,7 +936,7 @@ export class Core {
    * get elements array single (one element per group)
    * @returns {Array} array of elements
    */
-  getElementsSingle() {
+  getGroupElements() {
     let self = this;
     // groups
     let groups = [];
@@ -2055,7 +2072,7 @@ export class Core {
       return false;
     }
     // prevent default if not loop
-    let max = self.getElementsSingle().length - 1;
+    let max = self.getGroupElements().length - 1;
     let delta = -e.deltaY || -e.detail || e.wheelDelta || e.wheelDeltaY;
     if ((delta > 0 && self.currentIndex > 0) || (delta < 0 && self.currentIndex < max - 1)) {
       // prevent wheel
@@ -2634,7 +2651,7 @@ export class Core {
   goToPrev(amount = 1, force = false, loop = null) {
     let self = this;
     // goToIndex
-    let index = self.getElementsSingle().length - 1;
+    let index = self.getGroupElements().length - 1;
     if (self.currentIndex !== null) {
       index = self.currentIndex - amount;
     }
@@ -2652,7 +2669,7 @@ export class Core {
     let self = this;
     let options = self.options;
     // check
-    let max = self.getElementsSingle().length - 1;
+    let max = self.getGroupElements().length - 1;
     if (index > max) {
       if (loop || (loop === null && options.loop)) {
         index = index - max - 1;
@@ -2669,7 +2686,7 @@ export class Core {
       }
     }
     // go
-    let current = self.getElementsSingle()[index];
+    let current = self.getGroupElements()[index];
     self.eventOn(current, force);
   }
 
@@ -2775,3 +2792,9 @@ export class Core {
 
 Core.componentName = 'xt-core';
 
+//////////////////////
+// export
+//////////////////////
+
+customElements.define(Core.componentName, Core);
+export {Core};

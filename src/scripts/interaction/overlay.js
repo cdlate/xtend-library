@@ -9,7 +9,7 @@ import {Core} from '../core';
 // Overlay
 //////////////////////
 
-export class Overlay extends Core {
+class Overlay extends Core {
 
   /**
    * constructor
@@ -74,3 +74,10 @@ Overlay.optionsDefault = {
   "closeInside": ".overlay_dismiss, :scope > .backdrop",
   "scrollbar": true
 };
+
+//////////////////////
+// export
+//////////////////////
+
+customElements.define(Overlay.componentName, Overlay);
+export {Overlay};

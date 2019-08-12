@@ -9,7 +9,7 @@ import {Core} from '../core';
 // Slider
 //////////////////////
 
-export class Slider extends Core {
+class Slider extends Core {
 
   /**
    * constructor
@@ -1028,3 +1028,10 @@ Slider.optionsDefault = {
     "timeLimit": 25
   }
 };
+
+//////////////////////
+// export
+//////////////////////
+
+customElements.define(Slider.componentName, Slider);
+export {Slider};

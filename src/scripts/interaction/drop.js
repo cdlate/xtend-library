@@ -9,7 +9,7 @@ import {Core} from '../core';
 // Drop
 //////////////////////
 
-export class Drop extends Core {
+class Drop extends Core {
 
   /**
    * constructor
@@ -63,3 +63,10 @@ Drop.optionsDefault = {
   "closeOutside": "body",
   "ariaControls": ":scope > a, :scope > button"
 };
+
+//////////////////////
+// export
+//////////////////////
+
+customElements.define(Drop.componentName, Drop);
+export {Drop};

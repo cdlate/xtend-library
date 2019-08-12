@@ -9,7 +9,7 @@ import {Core} from '../core';
 // smooth
 //////////////////////
 
-export class Smooth extends Core {
+class Smooth extends Core {
 
   /**
    * constructor
@@ -41,3 +41,10 @@ Smooth.optionsDefault = {
     "frictionLimit": 1.5
   }
 };
+
+//////////////////////
+// export
+//////////////////////
+
+customElements.define(Smooth.componentName, Smooth);
+export {Smooth};

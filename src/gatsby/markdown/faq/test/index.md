@@ -102,7 +102,7 @@ let self = Xt.init('xt-scroll', document.documentElement, {
   </div>
 </demo>
 
-###Demos
+###Inline
 
 <demo>
   <demovanilla src="demos/inline/faq/test-vanilla" name="vanilla">
@@ -121,7 +121,7 @@ let self = Xt.init('xt-scroll', document.documentElement, {
   </demoreact>
 </demo>
 
-###Iframe demos
+###Iframe
 
 <demo>
   <div class="demo_item" data-iframe="demos/faq/test-vanilla-iframe" data-name="vanilla">
@@ -137,5 +137,12 @@ let self = Xt.init('xt-scroll', document.documentElement, {
         Test
       </div>
     </div>
+  </div>
+</demo>
+
+###Custom elements
+
+<demo>
+  <div class="demo_item" data-iframe="demos/faq/test-custom-element" data-name="custom elements">
   </div>
 </demo>

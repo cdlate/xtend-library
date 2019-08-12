@@ -9,7 +9,7 @@ import {Core} from '../core';
 // Toggle
 //////////////////////
 
-export class Toggle extends Core {
+class Toggle extends Core {
 
   /**
    * constructor
@@ -68,3 +68,10 @@ Toggle.optionsDefault = {
   "max": 1,
   "instant": {"elements": true}
 };
+
+//////////////////////
+// export
+//////////////////////
+
+customElements.define(Toggle.componentName, Toggle);
+export {Toggle};

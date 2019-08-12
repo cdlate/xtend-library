@@ -9,7 +9,7 @@ import {Core} from '../core';
 // Sticky
 //////////////////////
 
-export class Sticky extends Core {
+class Sticky extends Core {
 
   /**
    * constructor
@@ -333,7 +333,7 @@ export class Sticky extends Core {
         el.style.transform = 'translateY(' + add + 'px)';
       }
       // fix position fixed width 100% of parent
-      let width = Xt.normalizeWidth(tr.clientWidth);
+      let width = Xt.normalizeWidth(el.clientWidth);
       if (el.style.width !== width) {
         el.style.width = width;
       }
@@ -445,3 +445,9 @@ Sticky.optionsDefault = {
   "aria": false
 };
 
+//////////////////////
+// export
+//////////////////////
+
+customElements.define(Sticky.componentName, Sticky);
+export {Sticky};
