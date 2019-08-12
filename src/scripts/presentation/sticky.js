@@ -14,11 +14,10 @@ class Sticky extends Core {
   /**
    * constructor
    * @param {Node|HTMLElement|EventTarget|Window} object Base node
-   * @param {Object} optionsJs User options
    * @constructor
    */
-  constructor(object, optionsJs = {}) {
-    super(object, optionsJs);
+  constructor(object) {
+    super(object);
   }
 
   //////////////////////
@@ -256,7 +255,7 @@ class Sticky extends Core {
           Xt.dataStorage.remove(el, self.componentNamespace + 'Initial');
         }
         // inside
-        self.eventOn(el);
+        self.eventOn(el, true);
         // hide
         if (addHide) {
           hide = true;
@@ -269,7 +268,7 @@ class Sticky extends Core {
           Xt.dataStorage.remove(el, self.componentNamespace + 'Initial');
         }
         // outside
-        self.eventOff(el);
+        self.eventOff(el, true);
       }
       // after active
       if (el.classList.contains(...self.classes)) {

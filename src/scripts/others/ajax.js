@@ -14,11 +14,10 @@ class Ajax extends Core {
   /**
    * constructor
    * @param {Node|HTMLElement|EventTarget|Window} object Base node
-   * @param {Object} optionsJs User options
    * @constructor
    */
-  constructor(object, optionsJs = {}) {
-    super(object, optionsJs);
+  constructor(object) {
+    super(object);
     // prevent scroll on popstate
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
@@ -32,7 +31,7 @@ class Ajax extends Core {
   /**
    * init
    */
-  init(object = false, optionsJs = false) {
+  init(object = false) {
     let self = this;
     // vars
     self.locationFrom = self.locationTo || null; // fix popstate

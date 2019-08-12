@@ -12,7 +12,7 @@ class Header extends React.Component {
       <header className="site_header">
 
         <xt-sticky className="site_header_top_outer"
-             options='{"sticky": "fixed"}'>
+                   options='{"sticky": "fixed"}'>
           <div className="site_header_top">
 
             <div className="row row-space--none site_header_top_row">

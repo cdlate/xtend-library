@@ -19,9 +19,9 @@ class Demo extends React.Component {
   render() {
     const {children} = this.props
     return (
-      <div className="demo" ref={this.demoRef}>
+      <xt-toggle class="demo" ref={this.demoRef}>
         {children}
-      </div>
+      </xt-toggle>
     )
   }
 }

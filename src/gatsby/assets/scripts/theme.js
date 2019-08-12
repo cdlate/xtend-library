@@ -1,26 +1,6 @@
 import {Xt} from "../../../../src/scripts/xtend";
 
 //////////////////////
-// smooth
-//////////////////////
-
-/*
-Xt.observe.push({
-  matches: 'html',
-  fnc: function (main, index, query) {
-
-    // smooth
-
-    let self = Xt.init('xt-smooth', document.scrollingElement, {});
-    self.unmount = function () {
-      self = null;
-    };
-
-  }
-});
-*/
-
-//////////////////////
 // makeDocument
 //////////////////////
 

@@ -13,49 +13,88 @@ class Core extends HTMLElement {
   /**
    * constructor
    * @param {Node|HTMLElement|EventTarget|Window} object Base node
-   * @param {Object} optionsJs User options
    * @constructor
    */
-  constructor(object, optionsJs = {}) {
+  constructor(object) {
     super();
+    // @FIX ignore
+    if (this.closest('.xt-ignore')) { return null; }
+    // vars
     let self = this;
     self.object = self;
-    self.optionsJs = optionsJs;
     self.componentName = self.constructor.componentName;
     self.componentNamespace = self.componentName.replace(/^[^a-z]+|[ ,#_:.-]+/gi, '');
   }
 
   /**
-   * custom element inserted into the DOM
+   * inserted into the DOM
    */
   connectedCallback() {
     let self = this;
     // @FIX ignore
-    if (self.object.closest('.xt-ignore')) {
-      if (Xt.debug === true) {
-        console.warn(self.componentName + ' inside xt-ignore will not be initialized:', self.object);
-      }
-      return null;
-    }
-    // not if already done
-    if (self.object.getAttribute('data-' + self.componentName + '-inited')) {
-      if (Xt.debug === true) {
-        console.warn(self.componentName + ' already initialized:', self.object);
-      }
-      return Xt.get(self.componentName, self.object);
-    }
-    self.object.setAttribute('data-' + self.componentName + '-inited', 'true');
+    if (this.closest('.xt-ignore')) { return null; }
     // init
-    self.init(self.object, self.optionsJs);
+    self.init(self.object);
   }
 
   /**
-   * custom element removed from the DOM
+   * removed from the DOM
    */
   disconnectedCallback() {
     let self = this;
+    // @FIX ignore
+    if (this.closest('.xt-ignore')) { return null; }
     // destroy
     self.destroy();
+  }
+
+  //////////////////////
+  // Attributes
+  //////////////////////
+
+  /**
+   * observed attributes that trigger attributeChangedCallback
+   */
+  static get observedAttributes() {
+    return ['data'];
+  }
+
+  /**
+   * observed attribute has been added, removed, updated, or replaced, also for initial values when an element is created by the parser, or upgraded
+   * @param {String} name Attribute name
+   * @param {String} oldValue
+   * @param {String} newValue
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    let self = this;
+    // @FIX ignore
+    if (this.closest('.xt-ignore')) { return null; }
+    // init
+    self.init(self.object);
+  }
+
+  /**
+   * set data
+   * @param {String} value
+   */
+  set data(value) {
+    let self = this;
+    // @FIX ignore
+    if (this.closest('.xt-ignore')) { return null; }
+    // set data
+    self.object.setAttribute('data', value);
+  }
+
+  /**
+   * get data
+   * @returns {String} Attribute value
+   */
+  get data() {
+    let self = this;
+    // @FIX ignore
+    if (this.closest('.xt-ignore')) { return null; }
+    // get data
+    return self.object.getAttribute('data');
   }
 
   //////////////////////
@@ -65,10 +104,15 @@ class Core extends HTMLElement {
   /**
    * init
    */
-  init(object = false, optionsJs = false) {
+  init(object = false) {
     let self = this;
     self.object = object || self.object;
-    self.optionsJs = optionsJs || self.optionsJs;
+    // if already done
+    if (self.object.getAttribute('data-' + self.componentName + '-inited')) {
+      // first destroy weak
+      self.destroy(true);
+    }
+    self.object.setAttribute('data-' + self.componentName + '-inited', 'true');
     // vars
     self.classes = [];
     self.classesIn = [];
@@ -97,7 +141,7 @@ class Core extends HTMLElement {
    */
   initVars() {
     let self = this;
-    // option
+    // optionsDefault
     self.optionsDefault = {
       "class": "active",
       "classIn": "in",
@@ -132,11 +176,8 @@ class Core extends HTMLElement {
       }
     };
     self.optionsDefault = Xt.merge([self.optionsDefault, self.constructor.optionsDefault]);
-    // js options
-    self.options = Xt.merge([self.optionsDefault, self.optionsJs]);
-    // markup options
-    let markupOptions = self.object.getAttribute('options');
-    self.options = Xt.merge([self.options, markupOptions ? JSON.parse(markupOptions) : {}]);
+    // optionsAttribute
+    self.options = Xt.merge([self.optionsDefault, self.data ? JSON.parse(self.data) : {}]);
     // classes
     self.classes = [...self.options.class.split(' ')];
     self.classesIn = [...self.options.classIn.split(' ')];
@@ -302,7 +343,7 @@ class Core extends HTMLElement {
     // init events
     self.initEvents();
     // listener dispatch
-    requestAnimationFrame( function () {
+    requestAnimationFrame(function () {
       let detail = self.eDetailSet();
       self.object.dispatchEvent(new CustomEvent('init.xt', {detail: detail}));
     });
@@ -311,8 +352,8 @@ class Core extends HTMLElement {
   /**
    * init reset element activation
    * @param {Node|HTMLElement|EventTarget|Window} el Element to check and reset
-   * @returns {Boolean} if element was activated
    * @param {Boolean} saveCurrents
+   * @returns {Boolean} if element was activated
    */
   initReset(el, saveCurrents = false) {
     let self = this;
@@ -2354,7 +2395,7 @@ class Core extends HTMLElement {
           element.append(backdrop);
           // @FIX pass wheel event or when you mousewheel over .backdrop it doesn't scroll
           let eWheel = 'onwheel' in backdrop ? 'wheel' : backdrop.onmousewheel !== undefined ? 'mousewheel' : 'DOMMouseScroll';
-          backdrop.addEventListener(eWheel, function(e) {
+          backdrop.addEventListener(eWheel, function (e) {
             let delta = -e.deltaY || -e.detail || e.wheelDelta || e.wheelDeltaY;
             element.scrollTop -= delta;
           }, Xt.passiveSupported ? {passive: false} : false);
@@ -2751,6 +2792,18 @@ class Core extends HTMLElement {
     let self = this;
     // stop auto
     clearInterval(Xt.dataStorage.get(self.object, self.componentNamespace + 'AutoStartInterval'));
+    // remove data-xt- attributes
+    if (self.elements) {
+      for (let el of self.elements) {
+        el.removeAttribute('data-xt-namespace');
+        el.removeAttribute('data-xt-group');
+      }
+    }
+    if (self.targets) {
+      for (let tr of self.targets) {
+        tr.removeAttribute('data-xt-group');
+      }
+    }
     // remove events
     if (self.destroyElements) {
       for (let element of self.destroyElements) {

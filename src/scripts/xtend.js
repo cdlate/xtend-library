@@ -77,14 +77,13 @@ if (typeof window !== 'undefined') {
    * init component
    * @param {String} name Component name
    * @param {Node|HTMLElement|EventTarget|Window} element Component's element
-   * @param {Object} optionsJs User options
    */
 
-  Xt.init = function (name, element, optionsJs = {}) {
+  Xt.init = function (name, element) {
     for (let component of Xt.components) {
       if (name === component.name) {
         // constructor
-        let self = new component.class(element, optionsJs);
+        let self = new component.class(element);
         // set component
         Xt.set(name, element, self);
         // return

@@ -14,11 +14,10 @@ class Drop extends Core {
   /**
    * constructor
    * @param {Node|HTMLElement|EventTarget|Window} object Base node
-   * @param {Object} optionsJs User options
    * @constructor
    */
-  constructor(object, optionsJs = {}) {
-    super(object, optionsJs);
+  constructor(object) {
+    super(object);
   }
 
   //////////////////////

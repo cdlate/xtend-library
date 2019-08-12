@@ -74,7 +74,7 @@ const populateDemo = function (container, i) {
   let items = container.querySelectorAll('.demo_item');
   // multiple elements
   container.prepend(Xt.createElement('<div class="demo_tabs"><div class="demo_tabs_left"></div><div class="demo_tabs_right"></div></div>'));
-  container.querySelector('.demo_tabs_right').append(Xt.createElement('<button type="button" class="btn btn--text btn--tiny btn--narrow btn--show-code" data-toggle="tooltip" data-placement="top" aria-label="Show code"><span class="icon-code icon--big"></span></button>'));
+  container.querySelector('.demo_tabs_right').append(Xt.createElement('<xt-toggle type="button" class="btn btn--text btn--tiny btn--narrow btn--show-code" data-toggle="tooltip" data-placement="top" aria-label="Show code"><span class="icon-code icon--big"></span></xt-toggle>'));
   container.querySelector('.demo_tabs_right').append(Xt.createElement('<button type="button" class="btn btn--text btn--tiny btn--narrow btn--open-full" data-toggle="tooltip" data-placement="top" aria-label="Open full"><span class="icon-maximize icon--big"></span></button>'));
   // don't show tabs on single
   /*
@@ -179,26 +179,24 @@ const populateDemo = function (container, i) {
     }
   }
   // toggle code
+  let code = container.querySelector('.btn--show-code');
   let demoId = 'demo_' + i;
   container.setAttribute('id', demoId);
-  Xt.init('xt-toggle', container.querySelector('.btn--show-code'), {
+  code.data = JSON.stringify({
     "targets": "#" + demoId,
     "targetsInner": ".demo_code",
     "aria": false
   });
-  let codes = container.querySelectorAll('.btn--show-code');
-  for (let code of codes) {
-    code.addEventListener('on.xt', function (e) {
-      if (e.target === code) {
-        let btns = document.querySelectorAll('.btn--show-code.active');
-        for (let btn of btns) {
-          if (btn !== code) {
-            btn.dispatchEvent(new CustomEvent('off.xt'));
-          }
+  code.addEventListener('on.xt', function (e) {
+    if (e.target === code) {
+      let btns = document.querySelectorAll('.btn--show-code.active');
+      for (let btn of btns) {
+        if (btn !== code) {
+          btn.dispatchEvent(new CustomEvent('off.xt'));
         }
       }
-    });
-  }
+    }
+  });
   // toggle fullscreen
   /*
   element.find('.demo_tabs_left .button').on('on', function(e, obj) {
@@ -214,7 +212,7 @@ const populateDemo = function (container, i) {
   });
   */
   // demo tabs
-  Xt.init('xt-toggle', container, {
+  container.data = JSON.stringify({
     "elements": ".demo_tabs_left .btn",
     "targets": ".demo_item",
     "min": 1
@@ -244,11 +242,6 @@ const populateInline = function (item) {
     }
     */
   }
-  Xt.init('xt-toggle', item, {
-    "elements": ".demo_code_tabs_left .btn",
-    "targets": ".demo_code_body_item",
-    "min": 1
-  });
 };
 
 // populateShadow
@@ -416,11 +409,6 @@ const populateIframe = function (item, iframe, htmlSource, jsSource, cssSource) 
     populateSources(item, el, z);
     el.remove();
   }
-  Xt.init('xt-toggle', item, {
-    "elements": ".demo_code_tabs_left .btn",
-    "targets": ".demo_code_body_item",
-    "min": 1
-  });
 }
 
 // populateSources

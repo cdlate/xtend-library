@@ -14,11 +14,10 @@ class Scroll extends Core {
   /**
    * constructor
    * @param {Node|HTMLElement|EventTarget|Window} object Base node
-   * @param {Object} optionsJs User options
    * @constructor
    */
-  constructor(object, optionsJs = {}) {
-    super(object, optionsJs);
+  constructor(object) {
+    super(object);
   }
 
   //////////////////////
@@ -213,7 +212,7 @@ class Scroll extends Core {
               Xt.dataStorage.set(el, self.componentNamespace + 'OnCount', currentOn);
               Xt.dataStorage.set(el, self.componentNamespace + 'OnTot', currentsOn.length);
               currentOn++;
-              self.eventOn(el);
+              self.eventOn(el, true);
             }));
           }
         } else {
@@ -235,7 +234,7 @@ class Scroll extends Core {
               Xt.dataStorage.set(el, self.componentNamespace + 'OffCount', currentOff);
               Xt.dataStorage.set(el, self.componentNamespace + 'OffTot', currentsOff.length);
               currentOff++;
-              self.eventOff(el);
+              self.eventOff(el, true);
             }));
           }
         }
