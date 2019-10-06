@@ -1,0 +1,173 @@
+/**
+ * vars
+ */
+
+@import '~xtend-library/dist/xtend.css';
+
+:root {
+
+  // colors
+
+  --white: #fff;
+  --black: #000;
+  --gray--200: #eff4fd;
+  --gray--300: #d6e1f6;
+  --gray--500: #7a7e8e;
+  --gray--900: #373944;
+
+  --primary: #7567f8; // #fa1664
+  --primary--dark: color-mod(var(--primary) blackness(5%));
+
+  --secondary: var(--gray--200);
+  --secondary--dark: color-mod(var(--secondary) blackness(5%));
+
+  --text: var(--gray--900);
+  --text--dark: var(--black);
+
+  --text--inverse: var(--white);
+  --text--inverse--dark: var(--gray--200);
+
+  --info: var(--gray--900);
+  --success: #5CC764;
+  --error: #CD1719;
+
+  // shadow
+  // USAGE: box-shadow: --shadow--light;
+
+  --shadow--dark: 0 .1rem 1rem color-mod(var(--gray--500) alpha(40%)), 0 .2rem 2rem color-mod(var(--gray--500) alpha(80%));
+  --shadow--light: 0 .1rem 1rem color-mod(var(--gray--300) alpha(40%)), 0 .2rem 2rem color-mod(var(--gray--300) alpha(80%));
+  --shadow--primary: 0 .1rem 1rem color-mod(var(--primary--dark) alpha(10%)), 0 .2rem 2rem color-mod(var(--primary--dark) alpha(20%));
+  --shadow--secondary: 0 .1rem 1rem color-mod(var(--secondary--dark) alpha(40%)), 0 .2rem 2rem color-mod(var(--secondary--dark) alpha(80%));
+
+  // gradient
+  // USAGE: background: linear-gradient(135deg, --grad--light);
+
+  --grad--dark: --gray--500 33%, color-mod(var(--gray--500) blackness(2%)) 100%;
+  --grad--light: --gray--200 33%, color-mod(var(--gray--200) blackness(2%)) 100%;
+  --grad--primary: --primary 33%, color-mod(var(--primary) blackness(2%)) 100%;
+  --grad--secondary: --secondary 33%, color-mod(var(--secondary) blackness(2%)) 100%;
+
+  // z-index
+
+  --index--base: 0;
+  --index--active: 2;
+  --index--loader: 11;
+  --index--sticky: 500; // --index--sticky by javascript 100 and decreses with sequential sticky
+  --index--top: 501;
+  --index--indicator: 510;
+  --index--backdrop: 530;
+  --index--drop: 550;
+  --index--overlay: 600;
+  --index--btn-close: 700;
+  --index--last: 701;
+
+}
+
+// spacing
+
+/*TODO
+@margins: auto auto, none 0, micro .25rem, tiny .5rem, small 1rem, medium 2rem, big 4rem, giant 6rem, huge 12rem;
+@paddings: auto auto, none 0, micro .25rem, tiny .5rem, small 1rem, medium 2rem, big 4rem, giant 6rem, huge 12rem;
+*/
+
+// order
+
+/*TODO
+@orders: -3, -2, -1, 0, 1, 2, 3;
+*/
+
+// breakpoints
+
+$breakpoints: xs, sm, md, lg, xl; // if you change this change also variables names below
+$breakpoint--xs: 576px;
+$breakpoint--sm: 768px;
+$breakpoint--md: 992px;
+$breakpoint--lg: 1200px;
+$breakpoint--xl: 1300px;
+
+// @media queries
+// USAGE: @media (--min-sm) and (--max-md) {}
+
+@custom-media --min-xs (min-width: $breakpoint--xs);
+@custom-media --max-xs (max-width: calc($breakpoint--xs - 1px));
+
+@custom-media --min-sm (min-width: $breakpoint--sm);
+@custom-media --max-sm (max-width: calc($breakpoint--sm - 1px));
+
+@custom-media --min-md (min-width: $breakpoint--md);
+@custom-media --max-md (max-width: calc($breakpoint--md - 1px));
+
+@custom-media --min-lg (min-width: $breakpoint--lg);
+@custom-media --max-lg (max-width: calc($breakpoint--lg - 1px));
+
+@custom-media --min-xl (min-width: $breakpoint--xl);
+@custom-media --max-xl (max-width: calc($breakpoint--xl - 1px));
+
+/**
+ * background
+ */
+
+body {
+  background: var(--white);
+  @media (--min-lg) {
+    background: var(--primary);
+    background: color-mod(var(--primary) alpha(50%));
+    transform: translateX(10px);
+  }
+}
+
+/**
+ * scrollbar
+ */
+
+/*TODO
+.overflow-style(@mode: none) {
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+    background: transparent;
+    @media (hover: none) {
+      display: none;
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background: color-mod(#888888 alpha(40%));
+    &:hover {
+      background: color-mod(#888888 alpha(60%));
+    }
+  }
+}
+*/
+
+/**
+ * focus
+ */
+
+html.xt-focus:not(.xt-focus--disable) {
+  // custom focus
+  :focus {
+    outline-color: rgb(77, 144, 254);
+  }
+  // checkbox and radio
+  input[type="checkbox"], input[type="radio"] {
+    &:focus ~ .form-label:before {
+      outline-color: rgb(77, 144, 254);
+      outline-offset: -2px;
+      outline-style: auto;
+      outline-width: 5px;
+    }
+  }
+}
+
+/**
+ * disabled
+ */
+
+[disabled], .disabled {
+  /*TODO.user-select--none();*/
+  cursor: default;
+  pointer-events: none;
+  &:not(.active) {
+    opacity: .75;
+  }
+}

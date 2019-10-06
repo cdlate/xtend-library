@@ -45,7 +45,7 @@ a, button {
 }
 
 button {
-  .reset-text();
+  /*TODO.reset-text();*/
   border: 0;
   padding: 0;
   background: transparent;

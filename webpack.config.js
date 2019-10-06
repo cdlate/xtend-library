@@ -7,7 +7,7 @@ module.exports = {
   mode: 'development',
   context: path.resolve(__dirname, ''),
   entry: {
-    'dist/xtend': ['./dist/xtend.js', './dist/xtend.less']
+    'dist/xtend': ['./dist/xtend.css', './dist/xtend.js']
   },
   output: {
     filename: '[name].min.js',
@@ -15,7 +15,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'xtend-library': path.resolve(__dirname, './') // resolve xtend-library js and less
+      'xtend-library': path.resolve(__dirname, './') // resolve xtend-library js
     }
   },
   module: {
@@ -42,20 +42,17 @@ module.exports = {
         }
       },
       {
-        test: /\.less$/,
+        test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true
+              importLoaders: 1
             }
           },
           {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true
-            }
+            loader: 'postcss-loader'
           }
         ]
       },

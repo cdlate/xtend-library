@@ -19,7 +19,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
-    'gatsby-plugin-less',
+    'gatsby-plugin-postcss',
     // manifest
     {
       resolve: 'gatsby-plugin-manifest',
@@ -33,7 +33,7 @@ module.exports = {
         icon: 'src/gatsby/assets/images/favicon.png'
       }
     },
-    // resolve js and less
+    // resolve js and css
     {
       resolve: 'gatsby-plugin-module-resolver',
       options: {

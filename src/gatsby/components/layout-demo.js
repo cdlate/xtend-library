@@ -8,7 +8,7 @@ import 'xtend-library/src/xtend-core.js'
 import 'xtend-library/src/xtend-demo.js'
 import 'xtend-library/src/xtend-extension.js'
 
-import 'assets/styles/theme.less'
+import 'assets/styles/theme.css'
 
 class Layout extends React.Component {
   componentDidMount () {

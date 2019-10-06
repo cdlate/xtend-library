@@ -9,40 +9,40 @@ import glob from 'glob'
 import writeFile from 'write'
 import { markdownSlug } from './src/gatsby/components/markdown-slug.js'
 
-// write xtend less
+// write xtend css
 
-let lessCore = ''
-const lessCoreGlob = new glob.Glob('src/core/**/*.less', { ignore: ['**/*-setup.less'] }, function (er, files) {
+let cssCore = ''
+const cssCoreGlob = new glob.Glob('src/core/**/*.css', { ignore: ['**/*-setup.css'] }, function (er, files) {
   for (const file of files) {
-    lessCore += `@import '~xtend-library/${file}';\n`
+    cssCore += `@import '~xtend-library/${file}';\n`
   }
 })
-lessCoreGlob.on('end', function (filepath) {
-  writeFile('./src/xtend-core.less', lessCore, function (err) {
+cssCoreGlob.on('end', function (filepath) {
+  writeFile('./src/xtend-core.css', cssCore, function (err) {
     if (err) console.log(err)
   })
 })
 
-let lessDemo = ''
-const lessDemoGlob = new glob.Glob('src/demo/**/*.less', function (er, files) {
+let cssDemo = ''
+const cssDemoGlob = new glob.Glob('src/demo/**/*.css', function (er, files) {
   for (const file of files) {
-    lessDemo += `@import '~xtend-library/${file}';\n`
+    cssDemo += `@import '~xtend-library/${file}';\n`
   }
 })
-lessDemoGlob.on('end', function (filepath) {
-  writeFile('./src/xtend-demo.less', lessDemo, function (err) {
+cssDemoGlob.on('end', function (filepath) {
+  writeFile('./src/xtend-demo.css', cssDemo, function (err) {
     if (err) console.log(err)
   })
 })
 
-let lessExtension = ''
-const lessExtensionGlob = new glob.Glob('src/extension/**/*.less', function (er, files) {
+let cssExtension = ''
+const cssExtensionGlob = new glob.Glob('src/extension/**/*.css', function (er, files) {
   for (const file of files) {
-    lessExtension += `@import '~xtend-library/${file}';\n`
+    cssExtension += `@import '~xtend-library/${file}';\n`
   }
 })
-lessExtensionGlob.on('end', function (filepath) {
-  writeFile('./src/xtend-extension.less', lessExtension, function (err) {
+cssExtensionGlob.on('end', function (filepath) {
+  writeFile('./src/xtend-extension.css', cssExtension, function (err) {
     if (err) console.log(err)
   })
 })
