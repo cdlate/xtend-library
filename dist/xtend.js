@@ -2,9 +2,10 @@
 @copyright (c) 2017 - 2019 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend-library/blob/master/LICENSE) */
 
-// support explorer 15, firefox 48, opera 36, safari 10, chrome 49
+// support explorer 12, firefox 38, opera 25, safari 10, chrome 38
 //<!-- // https://browser-update.org/ -->
-//<script>var $buoop = {required: {e: 15, f: 48, o: 36, s: 10, c: 49}, reminder: 0, no_permanent_hide: true, api: 2019.05};</script>
+//<style>#buorg {visibility: visible}</style>
+//<script>var $buoop = {required: {e: 12, f: 38, o: 25, s: 10, c: 38}, reminder: 0, no_permanent_hide: true, api: 2019.05};</script>
 //<script src="//browser-update.org/update.min.js" defer></script>
 
 // support old browsers ie11+
