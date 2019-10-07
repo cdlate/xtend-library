@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
+import Helmet from 'react-helmet'
 
 import Header from 'components/header'
 import Footer from 'components/footer'
@@ -43,6 +44,13 @@ class Layout extends React.Component {
         `}
         render={data => (
           <>
+            <Helmet>
+              <script>
+                {`
+                var $buoop = {required: {e: 15, f: 48, o: 34, s: 10, c: 47}, reminder: 0, no_permanent_hide: true, api: 2019.05};
+                `}</script>
+              <script src="//browser-update.org/update.min.js" defer></script>
+            </Helmet>
             <div className={`site_wrapper
               ${page ? ' site_wrapper--with-sidebar site_wrapper--with-aside' : ''}`}>
 

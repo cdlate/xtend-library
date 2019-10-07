@@ -1,4 +1,5 @@
 import 'xtend-library/src/polyfill.js'
+import 'xtend-library/src/polyfill-old.js'
 
 //
 // constructor

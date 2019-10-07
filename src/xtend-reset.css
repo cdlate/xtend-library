@@ -129,3 +129,59 @@ html:not(.xt-focus), html.xt-focus--disable {
     outline: 0;
   }
 }
+
+/**
+ * TESTS
+ */
+
+:root {
+  --test: #fff;
+}
+
+.btn {
+  --background: var(--primary);
+  --background--on: red;
+  padding: 10px;
+  background: var(--primary);
+  color: var(--test);
+}
+
+/*
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:--heading {
+  color: #ffffff;
+  @media (--min-sm) {
+    background: var(--primary);
+    background: color-mod(var(--primary) a(50%));
+  }
+}
+
+:root {
+  --primary: red;
+}
+
+@define-mixin active {
+  &:active, &.active {
+    @mixin-content;
+  }
+}
+
+@custom-media --sm (max-width: 30em);
+
+.btn {
+  @extend .btn--primary;
+}
+
+.btn--primary {
+  color: var(--primary);
+  @mixin active {
+    color: white;
+    @media (--sm) {
+      background: var(--primary);
+      background: color-mod(var(--primary) a(50%));
+      transform: translateX(10px);
+    }
+  }
+}
+*/
