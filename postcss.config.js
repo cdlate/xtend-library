@@ -22,8 +22,14 @@ module.exports = {
         }
       }
     },
+    'postcss-mixins': {},
+    'postcss-nesting': {},
+    'postcss-simple-vars': {},
+    'postcss-extend-rule': {},
+    'postcss-object-fit-images': {},
     'postcss-preset-env': {
       stage: 0,
+      exportTo: 'dist/test.js',
       features: {
         'color-mod-function': { unresolved: 'warn' }
       }
@@ -37,10 +43,6 @@ module.exports = {
       // console.log(customProperties['--primary'])
     },
     */
-    'postcss-mixins': {},
-    'postcss-nesting': {},
-    'postcss-simple-vars': {},
-    'postcss-extend-rule': {},
     autoprefixer: {}
   }
 }

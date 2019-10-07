@@ -1,5 +1,6 @@
 import { TweenMax } from 'gsap/TweenMax'
 import { Xt } from 'xtend-library'
+import { customProperties } from 'xtend-library/dist/test.js'
 
 Xt.mount.push({
   matches: '.btn',
@@ -9,15 +10,18 @@ Xt.mount.push({
 
     const easeLinear = Power0.easeNone
     const objectStyle = getComputedStyle(object)
+    const objectStyleBackground = objectStyle.getPropertyValue('background-color')
 
     // methods
 
     function eventOn () {
-      TweenMax.to(object, 0.5, { backgroundColor: objectStyle.getPropertyValue('--background--on').trim(), ease: easeLinear })
+      console.log(customProperties['--secondary']);
+      TweenMax.to(object, 0.5, { backgroundColor: customProperties['--secondary'], ease: easeLinear })
     }
 
     function eventOff () {
-      TweenMax.to(object, 0.5, { backgroundColor: objectStyle.getPropertyValue('--background').trim(), ease: easeLinear })
+      console.log(objectStyleBackground);
+      TweenMax.to(object, 0.5, { backgroundColor: objectStyleBackground, ease: easeLinear })
     }
 
     // events

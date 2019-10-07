@@ -134,19 +134,16 @@ html:not(.xt-focus), html.xt-focus--disable {
  * TESTS
  */
 
+.btn {
+  padding: 10px;
+  background: var(--primary);
+}
+
+/*
 :root {
   --test: #fff;
 }
 
-.btn {
-  --background: var(--primary);
-  --background--on: red;
-  padding: 10px;
-  background: var(--primary);
-  color: var(--test);
-}
-
-/*
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
 :--heading {
