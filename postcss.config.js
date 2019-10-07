@@ -27,8 +27,9 @@ module.exports = {
         'color-mod-function': { unresolved: 'warn' },
       }
     },
-    'postcss-custom-properties': { // WAITING FOR https://github.com/csstools/postcss-preset-env/issues/145
-      exportTo: 'dist/xtend-vars.js' // PROBLEM it compiles js before exporting this vars!!! sarebbe meglio settare le variabili esternamente con postcss-preset-env o https://github.com/csstools/postcss-env-function
+    'postcss-custom-properties': {
+      // WAITING FOR https://github.com/csstools/postcss-preset-env/issues/145
+      // exportTo: 'dist/xtend-vars.js' // PROBLEM it compiles js before exporting this vars!!! sarebbe meglio settare le variabili esternamente con postcss-preset-env o https://github.com/csstools/postcss-env-function
       // USAGE
       // import {customProperties} from 'xtend-library/dist/xtend-vars.js'
       // console.log(customProperties['--primary'])
