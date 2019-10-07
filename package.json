@@ -71,8 +71,6 @@
     "glob": "^7.1.4",
     "lodash.kebabcase": "^4.1.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "postcss-custom-media": "^7.0.8",
-    "postcss-custom-properties": "^9.0.2",
     "postcss-extend-rule": "^3.0.0",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
