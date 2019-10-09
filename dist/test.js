@@ -1,5 +1,6 @@
 module.exports = {
 	customMedia: {
+		'--sm': '(max-width: 30em)',
 		'--min-xs': '(min-width: 576px)',
 		'--max-xs': '(max-width: calc(576px - 1px))',
 		'--min-sm': '(min-width: 768px)',
@@ -12,13 +13,14 @@ module.exports = {
 		'--max-xl': '(max-width: calc(1300px - 1px))'
 	},
 	customProperties: {
+		'--test': '#ffffff',
+		'--primary': '#7567f8',
 		'--white': '#fff',
 		'--black': '#000',
 		'--gray--200': '#eff4fd',
 		'--gray--300': '#d6e1f6',
 		'--gray--500': '#7a7e8e',
 		'--gray--900': '#373944',
-		'--primary': '#7567f8',
 		'--primary--dark': 'color-mod(var(--primary) blackness(5%))',
 		'--secondary': 'var(--gray--200)',
 		'--secondary--dark': 'color-mod(var(--secondary) blackness(5%))',
@@ -50,6 +52,6 @@ module.exports = {
 		'--index--last': '701'
 	},
 	customSelectors: {
-
+		':--heading': 'h1, h2, h3, h4, h5, h6'
 	}
 };

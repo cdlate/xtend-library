@@ -134,14 +134,16 @@ html:not(.xt-focus), html.xt-focus--disable {
  * TESTS
  */
 
-.btn {
-  padding: 10px;
-  background: var(--primary);
+:root {
+  --test: #ff0000;
+  @media (--min-sm) { // PROBLEMA non li compila
+    --test: #ff00ff;
+  }
 }
 
-/*
-:root {
-  --test: #fff;
+.btn {
+  padding: 10px;
+  background: var(--test);
 }
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
@@ -181,4 +183,3 @@ html:not(.xt-focus), html.xt-focus--disable {
     }
   }
 }
-*/
