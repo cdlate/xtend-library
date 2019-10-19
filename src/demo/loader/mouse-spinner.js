@@ -11,7 +11,7 @@ Xt.mount.push({
     // init
 
     const mouseFollowObject = object
-    const mouseFollowContainer = mouseFollowObject.closest('.card')
+    const mouseFollowContainer = mouseFollowObject.closest('.box')
 
     let mouseFollow = new Xt.MouseFollow(mouseFollowObject, mouseFollowContainer, {
       mouseCheck: function () {

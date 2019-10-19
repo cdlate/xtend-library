@@ -35,7 +35,7 @@ description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc temp
 
 ##Overflow
 
-Card with max sizes with automatic scrollbar on overflow with `card--overflow-y`.
+Card with max sizes with automatic scrollbar on overflow with `box--overflow-y`.
 
 <demo>
   <demovanilla src="inline/core/card/overflow-y">

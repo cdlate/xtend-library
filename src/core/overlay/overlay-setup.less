@@ -35,9 +35,10 @@
 
 .overlay-design {
   .design-setup();
+  border-radius: inherit;
 }
 
-.overlay-design, .overlay-content {
+.overlay-content {
   border-radius: inherit;
 }
 
@@ -104,7 +105,7 @@
   // .by-key(@generate-overlay-size, @name);
   @arr: ~"overlay--@{name}";
   @val: @@arr;
-  .overlay-inner {
+  .overlay-inner, .box-overlay > .box-inner > .box-content {
     max-width: @val;
   }
 }

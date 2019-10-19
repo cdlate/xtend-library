@@ -28,74 +28,114 @@
   .overlay-inner {
     border-radius: 4px;
   }
-  .overlay-design {
-    border-width: 1px;
+  // default options
+  .overlay-size(small);
+}
+
+/**
+ * box-overlay
+ */
+
+.box-overlay {
+  border-radius: .5em;
+  .box-design {
+    border-width: 0;
     border-style: solid;
     border-color: transparent;
   }
-  .overlay-content {
+  .box-title {
+    .spacing-small();
+    .font-sans--semibold();
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  // default options
+  .box-overlay.box--medium();
+}
+
+// variant
+
+.box-overlay.box--default {
+  color: @text;
+  .box-design {
+    border-color: @white;
+    background: @white;
+  }
+  .box-design {
+    box-shadow: @shadow-light;
+  }
+}
+
+.box-overlay.box--primary {
+  .text-inverse();
+  .box-design {
+    border-color: @accent;
+    background: @accent;
+  }
+  .box-design {
+    box-shadow: @shadow-primary;
+  }
+}
+
+// size
+
+.box-overlay.box--small {
+  .font--small();
+  .box-block {
     padding: 3rem;
     @media @min-sm {
       padding: 4rem;
     }
   }
-  // default options
-  .overlay-size(small);
-}
-
-// variant
-
-.overlay--default {
-  .overlay-design {
-    border-color: @gray-300;
-    background: @white;
-    box-shadow: @shadow-light;
-  }
-  .overlay-inner {
-    color: @text;
-  }
-  .btn-close {
-    .btn--text();
-  }
-  .overlay-content + .overlay-content {
-    border-top: 1px solid fade(@gray-800, 10%);
+  .box-title {
+    font-size: 2rem;
   }
 }
 
-.overlay--primary {
-  .overlay-design {
-    border-color: @gray-800;
-    background: @gray-800;
-    box-shadow: @shadow-dark;
+.box-overlay.box--medium {
+  .font--medium();
+  .box-block {
+    padding: 3rem;
+    @media @min-sm {
+      padding: 4rem;
+    }
   }
-  .overlay-inner {
-    .text-inverse();
+  .box-title {
+    font-size: 3rem;
   }
-  .btn-close {
-    .btn--text();
+}
+
+.box-overlay.box--big {
+  .font--big();
+  .box-block {
+    padding: 3rem;
+    @media @min-sm {
+      padding: 4rem;
+    }
   }
-  .overlay-content + .overlay-content {
-    border-top: 1px solid fade(@gray-200, 10%);
+  .box-title {
+    font-size: 4rem;
   }
 }
 
 // special
 
 .overlay--squared {
-  .overlay-inner {
-    border-radius: 0;
+  .box-overlay {
+    .box--squared();
   }
 }
 
 .overlay--noborder {
-  .overlay-design {
-    border: 0;
+  .box-overlay {
+    .box--noborder();
   }
 }
 
 .overlay--none {
-  .overlay-content {
-    padding: 0 !important;
+  .box-overlay {
+    .box--none();
   }
 }
 
@@ -155,10 +195,10 @@
 .overlay {
   animation-duration: @time-medium + @time-small; // needed for .out animation timing, put max animation time
   &.active {
-    .overlay-design {
+    .box-overlay > .box-design {
       .anim-zoom.active();
     }
-    .overlay-content, .overlay-block, .btn-close {
+    .box-overlay > .box-inner > .box-content, .btn-close {
       .anim-y.active();
       animation-delay: @time-small;
     }
@@ -167,11 +207,11 @@
     }
   }
   &.out {
-    .overlay-design {
+    .box-overlay > .box-design {
       .anim-zoom.out();
       animation-delay: @time-small;
     }
-    .overlay-content, .overlay-block, .btn-close {
+    .box-overlay > .box-inner > .box-content, .btn-close {
       .anim-y.out();
     }
     > .backdrop {

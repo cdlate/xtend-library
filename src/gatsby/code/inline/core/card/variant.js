@@ -12,12 +12,12 @@ demo.htmlSource = `
 
   <div class="col-12 col-6--sm">
   
-    <button type="button" class="card card--default">
-      <div class="card-design"></div>
-      <div class="card-inner">
-        <div class="card-content">
-          <div class="card-block card-item">
-            <div class="card-title">Default</div>
+    <button type="button" class="box box-card box--default">
+      <div class="box-design"></div>
+      <div class="box-inner">
+        <div class="box-content">
+          <div class="box-block box-item">
+            <div class="box-title">Default</div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non feugiat lorem, nec volutpat turpis. Sed pulvinar hendrerit mauris at pharetra. Suspendisse vel aliquam quam, non tincidunt sem.</p>
           </div>
         </div>
@@ -28,12 +28,12 @@ demo.htmlSource = `
   
   <div class="col-12 col-6--sm">
   
-    <button type="button" class="card card--default card--collapse card--full">
-      <div class="card-design"></div>
-      <div class="card-inner">
-        <div class="card-content">
-          <div class="card-block card-item">
-            <div class="card-title">Default full</div>
+    <button type="button" class="box box-card box--default box--collapse box--full">
+      <div class="box-design"></div>
+      <div class="box-inner">
+        <div class="box-content">
+          <div class="box-block box-item">
+            <div class="box-title">Default full</div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non feugiat lorem, nec volutpat turpis. Sed pulvinar hendrerit mauris at pharetra. Suspendisse vel aliquam quam, non tincidunt sem.</p>
           </div>
         </div>
@@ -44,12 +44,12 @@ demo.htmlSource = `
   
   <div class="col-12 col-6--sm">
   
-    <button type="button" class="card card--primary">
-      <div class="card-design"></div>
-      <div class="card-inner">
-        <div class="card-content">
-          <div class="card-block card-item">
-            <div class="card-title">Primary</div>
+    <button type="button" class="box box-card box--primary">
+      <div class="box-design"></div>
+      <div class="box-inner">
+        <div class="box-content">
+          <div class="box-block box-item">
+            <div class="box-title">Primary</div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non feugiat lorem, nec volutpat turpis. Sed pulvinar hendrerit mauris at pharetra. Suspendisse vel aliquam quam, non tincidunt sem.</p>
           </div>
         </div>
@@ -60,12 +60,12 @@ demo.htmlSource = `
   
   <div class="col-12 col-6--sm">
   
-    <button type="button" class="card card--primary card--collapse card--full">
-      <div class="card-design"></div>
-      <div class="card-inner">
-        <div class="card-content">
-          <div class="card-block card-item">
-            <div class="card-title">Primary full</div>
+    <button type="button" class="box box-card box--primary box--collapse box--full">
+      <div class="box-design"></div>
+      <div class="box-inner">
+        <div class="box-content">
+          <div class="box-block box-item">
+            <div class="box-title">Primary full</div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non feugiat lorem, nec volutpat turpis. Sed pulvinar hendrerit mauris at pharetra. Suspendisse vel aliquam quam, non tincidunt sem.</p>
           </div>
         </div>

@@ -8,14 +8,13 @@
     z-index: @index-overlay;
     max-width: none !important;
     .padding(all, none) !important;
-    .overlay-inner {
-      position: static;
-    }
   }
   .overlay-inner {
     .flex-auto();
     display: flex;
     flex-direction: column;
+    position: static;
+    max-width: none !important;
   }
   > .backdrop {
     .trans-anim-none() !important;

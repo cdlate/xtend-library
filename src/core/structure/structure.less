@@ -3,6 +3,7 @@
  */
 
 @white: #fff;
+@white--dark:  darken(@white, 5%);
 @black: #000;
 
 @gray-200: #eff4fd;
@@ -26,8 +27,8 @@
 // shadow
 // USAGE: box-shadow: @shadow-light;
 
+@shadow-light: 0 .1rem 1rem fade(@gray-300, 40%), 0 .2rem 2rem fade(@gray-300, 80%);
 @shadow-dark: 0 .1rem 1rem fade(@gray-800, 20%), 0 .2rem 2rem fade(@gray-800, 40%);
-@shadow-light: 0 .1rem 1rem fade(@gray-800, 5%), 0 .2rem 2rem fade(@gray-800, 10%);
 @shadow-primary: 0 .1rem 1rem fade(@accent--dark, 20%), 0 .2rem 2rem fade(@accent--dark, 40%);
 
 // gradient

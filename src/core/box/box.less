@@ -1,0 +1,283 @@
+@import '~xtend-library/src/core/box/box-setup.less';
+
+/**
+ * vars
+ */
+
+// generate class: [false], [true] non responsive only, [sm, md, lg] responsive @breakpoints
+
+@generate-box-horizontal: sm, md, lg;
+
+/**
+ * box
+ */
+
+.box {
+  a& {
+    .link-none() !important;
+  }
+  .box-item + .box-item {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+    }
+  }
+  .box-item .box-item + .box-item {
+    &:before {
+      left: 0;
+      bottom: 0;
+      right: auto;
+      width: 1px;
+      height: auto;
+    }
+  }
+}
+
+// variant
+
+.box--default {
+  color: @text;
+  .box-design {
+    border-color: @gray-200;
+    background: @gray-200;
+  }
+  .box-item + .box-item {
+    &:before {
+      background: fade(@gray-800, 10%);
+    }
+  }
+  a&, button& {
+    &:hover, &.hover, &:active, &.active {
+      color: @text--dark;
+      .box-design {
+        border-color: @gray-200--dark;
+        background: @gray-200--dark;
+      }
+    }
+    &:active, &.active {
+      .box-design {
+        box-shadow: @shadow-light;
+      }
+    }
+  }
+}
+
+.box--primary {
+  .text-inverse();
+  .box-design {
+    border-color: @accent;
+    background: @accent;
+  }
+  .box-item + .box-item {
+    &:before {
+      background: fade(@gray-200, 10%);
+    }
+  }
+  a&, button& {
+    &:hover, &.hover, &:active, &.active {
+      color: @text-inverse--dark;
+      .box-design {
+        border-color: @accent--dark;
+        background: @accent--dark;
+      }
+    }
+    &:active, &.active {
+      .box-design {
+        box-shadow: @shadow-primary;
+      }
+    }
+  }
+}
+
+// size
+
+.box--small {
+  .font--small();
+  .box-block {
+    padding: 1.5rem 2rem;
+  }
+  .box-title {
+    font-size: 1.7rem;
+  }
+  // addon
+  .box--collapse& {
+    .box-content {
+      padding: 1.5rem 2rem;
+    }
+    .box-content, .box-group {
+      .list-space(small);
+    }
+  }
+  .box--full& {
+    .box-design {
+      top: -1rem;
+      left: -1.5rem;
+      bottom: -1rem;
+      right: -1.5rem;
+    }
+  }
+}
+
+.box--medium {
+  .font--medium();
+  .box-block {
+    padding: 2rem 2.5rem;
+  }
+  .box-title {
+    font-size: 2rem;
+  }
+  // addon
+  .box--collapse& {
+    .box-content {
+      padding: 2rem 2.5rem;
+    }
+    .box-content, .box-group {
+      .list-space(medium);
+    }
+  }
+  .box--full& {
+    .box-design {
+      top: -1.5rem;
+      left: -2rem;
+      bottom: -1.5rem;
+      right: -2rem;
+    }
+  }
+}
+
+.box--big {
+  .font--big();
+  .box-block {
+    padding: 3rem 3.5rem;
+  }
+  .box-title {
+    font-size: 3rem;
+  }
+  // addon
+  .box--collapse& {
+    .box-content {
+      padding: 3rem 3.5rem;
+    }
+    .box-content, .box-group {
+      .list-space(big);
+    }
+  }
+  .box--full& {
+    .box-design {
+      top: -2.5rem;
+      left: -3rem;
+      bottom: -2.5rem;
+      right: -3rem;
+    }
+  }
+}
+
+// special
+
+.box--nodesign {
+  .box-design {
+    display: none;
+  }
+}
+
+.box--squared {
+  border-radius: 0;
+}
+
+.box--noborder {
+  .box-design {
+    border: 0;
+  }
+}
+
+.box--none {
+  .box--nodesign();
+  .box--squared();
+  .box-block {
+    padding: 0;
+  }
+}
+
+// addons
+
+.box--collapse {
+  .box-content {
+    .list-block();
+  }
+  .box-item {
+    padding: 0 !important;
+  }
+  .box-item + .box-item {
+    &:before {
+      display: none;
+    }
+  }
+}
+
+.box--full {
+  color: @text;
+  .box-design {
+    border-color: transparent;
+    background: transparent;
+  }
+}
+
+.box--overflow-y {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 30rem;
+  .overflow-style(@mode: inner);
+}
+
+.box--horizontal {
+  .box-item + .box-item {
+    &:before {
+      left: 0;
+      bottom: 0;
+      right: auto;
+      width: 1px;
+      height: auto;
+    }
+  }
+}
+
+// animation
+
+.box {
+  a&, button& {
+    transition-property: all;
+    transition-duration: @time-big;
+    transition-timing-function: @bez-out;
+    .box-design {
+      transition-property: all;
+      transition-duration: @time-big;
+      transition-timing-function: @bez-out;
+    }
+    .box-item {
+      transition-property: transform;
+      transition-duration: @time-big;
+      transition-timing-function: @bez-out;
+    }
+    &:hover, &.hover, &:active, &.active {
+      transform: translateY(-.5rem) scale(1.03, 1.05);
+      transition-property: all;
+      transition-duration: @time-big;
+      transition-timing-function: @bez-in;
+      .box-design {
+        transition-property: all;
+        transition-duration: @time-big;
+        transition-timing-function: @bez-in;
+      }
+      .box-item {
+        transform: scale(0.97, 0.95);
+        transition-property: transform;
+        transition-duration: @time-big;
+        transition-timing-function: @bez-in;
+      }
+    }
+  }
+}
