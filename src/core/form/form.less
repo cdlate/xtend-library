@@ -149,6 +149,9 @@ form, .form {
   .font-sans-regular();
   font-size: 1em; // size in em inherit .form-group size
   line-height: 1.4;
+  &:focus, &.active {
+    z-index: @index-active;
+  }
 }
 
 // variant

@@ -19,13 +19,15 @@
 
 @gray-100: #f8fafe;
 @gray-200: #eff4fd;
-@gray-200-dark: darken(@gray-200, 5%);
+@gray-200-dark: darken(@gray-200, 10%);
 @gray-300: #d6e1f6;
+@gray-300-dark: darken(@gray-300, 10%);
 @gray-500: #7a7e8e;
 @gray-900: #021a46;
 
 @accent: #0078ff;
-@accent-dark: darken(@accent, 5%);
+@accent-dark: darken(@accent, 10%);
+@accent-darker: darken(@accent, 20%);
 
 @text: @gray-900;
 @text-dark: @black;
@@ -152,7 +154,7 @@ body {
  */
 
 ::selection {
-  background-color: @accent-dark !important;
+  background-color: @accent !important;
   color: @white !important;
 }
 

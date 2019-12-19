@@ -9,7 +9,7 @@ export const demo = {
 }
 
 demo.htmlSource = `
-<div class="group full group-default">
+<div class="group group-default full">
   <div class="group-inner">
     <button type="button" class="btn btn-primary">
       Lorem

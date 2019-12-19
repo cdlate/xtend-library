@@ -1,12 +1,18 @@
 @import '~xtend-library/src/core/group/_group.less';
 
 /**
+ * vars
+ */
+
+@group-border-width: 2px;
+
+/**
  * group
  */
 
 .group {
   border-radius: .5em;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-color: transparent;
 }
@@ -14,25 +20,29 @@
 // variant
 
 .group-default {
-  .group-collapse();
   .form-item {
+    border-width: @group-border-width;
     border-color: @gray-300 !important;
+    &:focus, &.active {
+      border-color: @gray-300-dark !important;
+    }
   }
   .group-inner {
     > * {
+      border-width: @group-border-width;
       border-color: @gray-300 !important;
+      &:hover, &.hover, &:active, &.active {
+        border-color: @gray-300-dark !important;
+      }
     }
   }
-}
-
-// special
-
-.group-collapse {
+  // collapse border
   .group-inner {
-    margin-left: -1px;
-    margin-right: -1px;
     > * + * {
-      margin-top: -1px;
+      margin-top: -@group-border-width;
+    }
+    &:not(:last-child) {
+      margin-right: -@group-border-width;
     }
   }
 }

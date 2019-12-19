@@ -10,14 +10,6 @@ export const demo = {
 
 demo.htmlSource = `
 <div class="list list-default list-space-small align-items-center text-inverse" style="padding: 1rem 1.5rem; background: #0078ff;">
-  <button type="button" class="btn btn-default">
-    default
-  </button>
-
-  <button type="button" class="btn btn-primary">
-    primary
-  </button>
-
   <button type="button" class="btn btn-text">
     text
   </button>

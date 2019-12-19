@@ -5,8 +5,8 @@
  */
 
 .btn {
-  border-radius: .5em;
-  border-width: 1px;
+  border-radius: 0;
+  border-width: 2px;
   border-style: solid;
   border-color: transparent;
   .font-sans-semibold();
@@ -21,31 +21,25 @@
 
 .btn-default {
   .link-none();
-  border-color: @gray-200;
-  background: @gray-200;
+  border-color: @gray-300;
+  background: transparent;
   color: @text;
   &:hover, &.hover, &:active, &.active {
-    border-color: @gray-200-dark;
-    background: @gray-200-dark;
+    border-color: @gray-300-dark;
+    background: transparent;
     color: @text-dark;
-  }
-  &:active, &.active {
-    box-shadow: @shadow-light;
   }
 }
 
 .btn-primary {
   .link-none();
   border-color: @accent;
-  background: @accent;
-  color: @text-inverse;
+  background: transparent;
+  color: @accent-dark;
   &:hover, &.hover, &:active, &.active {
-    border-color: @accent-dark;
-    background: @accent-dark;
-    color: @text-inverse-dark;
-  }
-  &:active, &.active {
-    box-shadow: @shadow-accent;
+    border-color: @accent-darker;
+    background: transparent;
+    color: @accent-darker;
   }
 }
 
@@ -106,17 +100,14 @@
     border-color: transparent;
     background: transparent;
   }
-  &:active, &.active {
-    box-shadow: none;
-  }
 }
 
 .btn-squared {
   border-radius: 0;
 }
 
-.btn-noborder {
-  border: 0;
+.btn-border {
+  border-radius: .5em;
 }
 
 .btn-tall {

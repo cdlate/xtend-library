@@ -14,9 +14,9 @@
  */
 
 .card {
-  border-radius: .5em;
+  border-radius: 0;
   > .card-design {
-    border-width: 0;
+    border-width: 4px;
     border-style: solid;
     border-color: transparent;
   }
@@ -83,8 +83,8 @@
 .card-default {
   color: @text;
   > .card-design {
-    border-color: @gray-200;
-    background: @gray-200;
+    border-color: @gray-300;
+    background: transparent;
   }
   .card-contents({
     > .card-item {
@@ -99,15 +99,15 @@
   }
   // special
   .card-block-head {
-    background: @gray-200-dark;
+    background: @gray-300-dark;
   }
   // interactive
   a&, button& {
     &:hover, &.hover, &:active, &.active {
       color: @text-dark;
       > .card-design {
-        border-color: @gray-200-dark;
-        background: @gray-200-dark;
+        border-color: @gray-300-dark;
+        background: transparent;
       }
     }
     &:active, &.active {
@@ -127,10 +127,10 @@
 }
 
 .card-primary {
-  .text-inverse();
+  color: @text;
   > .card-design {
     border-color: @accent;
-    background: @accent;
+    background: transparent;
   }
   .card-contents({
     > .card-item {
@@ -145,15 +145,15 @@
   }
   // special
   .card-block-head {
-    background: @accent-dark;;
+    background: @accent-darker;
   }
   // interactive
   a&, button& {
     &:hover, &.hover, &:active, &.active {
-      color: @text-inverse-dark;
+      color: @text-dark;
       > .card-design {
-        border-color: @accent-dark;
-        background: @accent-dark;
+        border-color: @accent-darker;
+        background: transparent;
       }
     }
     &:active, &.active {
@@ -270,9 +270,9 @@
   border-radius: 0;
 }
 
-.card-noborder {
+.card-border {
   > .card-design {
-    border: 0;
+    border: .5em;
   }
 }
 
