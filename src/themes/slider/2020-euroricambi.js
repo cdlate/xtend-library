@@ -38,8 +38,8 @@ Xt.mount.push({
       durationOn: Xt.vars.timeBig,
       durationOff: Xt.vars.timeMedium,
       auto: {
-        time: 4500,
-        pause: '[data-xt-pag], [data-xt-nav], .slider_card .btn',
+        //time: 4500,
+        //pause: '[data-xt-pag], [data-xt-nav], .slider_card .btn',
       },
       autoHeight: false,
       groupMq: false,
@@ -48,6 +48,140 @@ Xt.mount.push({
       },
     })
 
+    // timeline
+
+    const eventInit = () => {
+      for (const tr of self.targets) {
+        const assetMasks = tr.querySelectorAll('.slider_img .media-container')
+        for (const assetMask of assetMasks) {
+          const xMax = assetMask.clientWidth
+          const maskTimeline = gsap.timeline({ paused: true })
+          maskTimeline.set(assetMask, { x: -xMax }, 'left')
+          maskTimeline.to(assetMask, { x: 0, duration: assetMaskTimeOn, ease: assetMaskEaseOn }, 'center')
+          maskTimeline.to(assetMask, { x: xMax, duration: assetMaskTimeOff, ease: assetMaskEaseOff }, 'right')
+          Xt.dataStorage.set(assetMask, 'maskTimeline', maskTimeline)
+          const assetMaskInner = assetMask.querySelector('.media-inner')
+          const maskInnerTimeline = gsap.timeline({ paused: true })
+          maskInnerTimeline.set(assetMaskInner, { x: xMax }, 'left')
+          maskInnerTimeline.to(assetMaskInner, { x: 0, duration: assetMaskTimeOn, ease: assetMaskEaseOn }, 'center')
+          maskInnerTimeline.to(assetMaskInner, { x: -xMax, duration: assetMaskTimeOff, ease: assetMaskEaseOff }, 'right')
+          Xt.dataStorage.set(assetMaskInner, 'maskInnerTimeline', maskInnerTimeline)
+        }
+      }
+    }
+
+    self.object.addEventListener('init.xt', eventInit)
+
+    // drag
+
+    const eventDrag = () => {
+      const tr = self.targets.filter(x => self.hasCurrent(x))[0]
+      const ratio = Math.abs(self.detail.dragStart - self.detail.dragCurrent) / tr.clientWidth
+      // direction
+      let direction = 1
+      if (self.detail.dragStart - self.detail.dragCurrent > 0) {
+        direction = -1
+      }
+      // assetMask
+      const assetMasks = tr.querySelectorAll('.slider_img .media-container')
+      for (const assetMask of assetMasks) {
+        const maskTimeline = Xt.dataStorage.get(assetMask, 'maskTimeline')
+        maskTimeline.progress((ratio * direction) / 2 + 0.5)
+        const assetMaskInner = assetMask.querySelector('.media-inner')
+        const maskInnerTimeline = Xt.dataStorage.get(assetMaskInner, 'maskInnerTimeline')
+        maskInnerTimeline.progress((ratio * direction) / 2 + 0.5)
+      }
+    }
+
+    self.dragger.addEventListener('drag.xt', eventDrag)
+
+    // dragreset
+
+    const eventDragReset = () => {
+      const tr = self.targets.filter(x => self.hasCurrent(x))[0]
+      const assetMasks = tr.querySelectorAll('.slider_img .media-container')
+      for (const assetMask of assetMasks) {
+        const maskTimeline = Xt.dataStorage.get(assetMask, 'maskTimeline')
+        console.log(assetMask, maskTimeline)
+        maskTimeline.tweenTo('center')
+        const assetMaskInner = assetMask.querySelector('.media-inner')
+        const maskInnerTimeline = Xt.dataStorage.get(assetMaskInner, 'maskInnerTimeline')
+        maskInnerTimeline.tweenTo('center')
+      }
+    }
+
+    self.dragger.addEventListener('dragreset.xt', eventDragReset)
+
+    /*
+    // on
+
+    const eventOn = e => {
+      const tr = e.target
+      // useCapture delegation
+      if (self.targets.includes(tr)) {
+        // direction
+        let direction = 1
+        if (tr.classList.contains('inverse')) {
+          direction = -1
+        }
+        // assetMask
+        if (!self.initial) {
+          const assetMasks = tr.querySelectorAll('.slider_img .media-container')
+          for (const assetMask of assetMasks) {
+            const maskTimeline = Xt.dataStorage.get(assetMask, 'maskTimeline')
+            if (direction) {
+              maskTimeline.tweenFromTo('left', 'center')
+            } else {
+              maskTimeline.tweenFromTo('right', 'center')
+            }
+            const assetMaskInner = assetMask.querySelector('.media-inner')
+            const maskInnerTimeline = Xt.dataStorage.get(assetMaskInner, 'maskInnerTimeline')
+            if (direction) {
+              maskInnerTimeline.tweenFromTo('left', 'center')
+            } else {
+              maskInnerTimeline.tweenFromTo('right', 'center')
+            }
+          }
+        }
+      }
+    }
+
+    self.object.addEventListener('on.xt', eventOn, true)
+
+    // off
+
+    const eventOff = e => {
+      const tr = e.target
+      // useCapture delegation
+      if (self.targets.includes(tr)) {
+        // direction
+        let direction = 1
+        if (tr.classList.contains('inverse')) {
+          direction = -1
+        }
+        const assetMasks = tr.querySelectorAll('.slider_img .media-container')
+        for (const assetMask of assetMasks) {
+          const maskTimeline = Xt.dataStorage.get(assetMask, 'maskTimeline')
+          if (direction) {
+            maskTimeline.tweenFromTo(assetMaskTimeOn, 0)
+          } else {
+            maskTimeline.tweenFromTo(assetMaskTimeOn, assetMaskTimeOn + assetMaskTimeOff)
+          }
+          const assetMaskInner = assetMask.querySelector('.media-inner')
+          const maskInnerTimeline = Xt.dataStorage.get(assetMaskInner, 'maskInnerTimeline')
+          if (direction) {
+            maskInnerTimeline.tweenFromTo(assetMaskTimeOn, 0)
+          } else {
+            maskInnerTimeline.tweenFromTo(assetMaskTimeOn, assetMaskTimeOn + assetMaskTimeOff)
+          }
+        }
+      }
+    }
+
+    self.object.addEventListener('off.xt', eventOff, true)
+    */
+
+    /*
     // drag
 
     const eventDrag = () => {
@@ -216,6 +350,7 @@ Xt.mount.push({
     }
 
     self.object.addEventListener('off.xt', eventOff, true)
+    */
 
     // unmount
 
