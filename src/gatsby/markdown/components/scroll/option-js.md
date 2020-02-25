@@ -30,8 +30,6 @@ You can set scroll mode.
 
 Use `distance: Number` activation and deactivation distance. For percent use `distance: 'Number%'`.
 
-The default **distance** is `distance: '20%'`.
-
 <div class="table-scroll">
 
 |                         | Syntax                                    | Default                       | Description                   |

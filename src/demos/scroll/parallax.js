@@ -71,7 +71,6 @@ Xt.mount.push({
     // init
 
     let self = new Xt.Scroll(object, {
-      sticky: true,
       start: '125%',
     })
 
