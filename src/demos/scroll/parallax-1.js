@@ -8,7 +8,10 @@ Xt.mount.push({
     // init
 
     let self = new Xt.Scroll(object, {
-      start: '100%',
+      distance: 0,
+      trigger: 0,
+      start: 0,
+      end: '100%',
     })
 
     // change

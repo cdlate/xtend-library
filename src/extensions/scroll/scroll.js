@@ -170,12 +170,13 @@ class Scroll extends Xt.Toggle {
           el.style.width = tr.offsetWidth + 'px'
         }
         // position
+        // @TODO scene
         self.detail.distance = Xt.windowPercent(options.distance)
         self.detail.trigger = Xt.windowPercent(options.trigger)
         self.detail.start = self.detail.startReal = elTop - windowHeight + Xt.windowPercent(options.start) + self.detail.distance
         self.detail.start = self.detail.start < self.detail.trigger ? self.detail.trigger : self.detail.start // limit fixes activation on page top
         self.detail.end = self.detail.endReal = options.end
-          ? self.detail.start + Xt.windowPercent(options.end) - self.detail.distance
+          ? self.detail.start + Xt.windowPercent(options.end) + elHeight - self.detail.distance
           : elTop + elHeight + self.detail.trigger - self.detail.distance
         self.detail.end =
           self.detail.end > self.detail.trigger + scrollHeight - window.innerHeight ? self.detail.trigger + scrollHeight - window.innerHeight : self.detail.end // limit fixes deactivation on page bottom
@@ -305,6 +306,7 @@ Scroll.optionsDefault = {
   classOut: 'fade-out',
   aria: false,
   // scroll only
+  // @TODO scene
   sticky: false,
   distance: '20%',
   trigger: '100%',

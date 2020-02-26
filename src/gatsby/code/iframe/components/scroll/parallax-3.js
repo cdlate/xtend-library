@@ -16,25 +16,11 @@ export const demo = {
 
 demo.htmlSource = `
 <br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
 
 <div class="demo--parallax-3 indicator">
    ${img({ classes: 'media-cover', ratio: '15%' })}
 </div>
 
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/>
 `
 
