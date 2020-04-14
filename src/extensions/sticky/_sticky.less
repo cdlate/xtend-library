@@ -16,10 +16,10 @@
     width: 100%;
   }
   // mode default
-  &.xt-clone:not(.active) {
+  &.xt-clone:not(.fade) {
     position: absolute;
   }
-  &:not(.xt-clone):not(.active) {
+  &:not(.xt-clone):not(.fade) {
     position: relative;
   }
   // showhide
@@ -29,7 +29,7 @@
   .hide-sticky {
     display: block;
   }
-  &:not(.xt-clone).active {
+  &:not(.xt-clone).fade {
     .show-sticky {
       display: block;
     }
@@ -38,7 +38,7 @@
     }
   }
   // activation
-  &:not(.xt-clone).active {
+  &:not(.xt-clone).fade {
     position: fixed;
     z-index: @index-sticky;
     width: 100%;
@@ -50,13 +50,13 @@
   &.xt-clone {
     position: relative;
   }
-  &.xt-clone:not(.active) {
+  &.xt-clone:not(.fade) {
     position: relative;
   }
-  &:not(.xt-clone):not(.active) {
+  &:not(.xt-clone):not(.fade) {
     position: relative;
   }
-  &.xt-fixed:not(.xt-clone):not(.active) {
+  &.xt-fixed:not(.xt-clone):not(.fade) {
     position: absolute;
     width: 100%;
   }
@@ -67,13 +67,13 @@
   &.xt-clone {
     position: relative;
   }
-  &.xt-clone:not(.active) {
+  &.xt-clone:not(.fade) {
     position: relative;
   }
-  &:not(.xt-clone):not(.active) {
+  &:not(.xt-clone):not(.fade) {
     position: relative;
   }
-  &.xt-fixed:not(.xt-clone):not(.active) {
+  &.xt-fixed:not(.xt-clone):not(.fade) {
     position: fixed;
     z-index: @index-sticky;
     width: 100%;
@@ -85,15 +85,15 @@
   &.xt-clone {
     position: absolute;
   }
-  &.xt-clone:not(.active) {
+  &.xt-clone:not(.fade) {
     position: absolute;
   }
-  &:not(.xt-clone):not(.active) {
+  &:not(.xt-clone):not(.fade) {
     position: fixed;
     z-index: @index-sticky;
     width: 100%;
   }
-  &.xt-fixed:not(.xt-clone):not(.active) {
+  &.xt-fixed:not(.xt-clone):not(.fade) {
     position: fixed;
     z-index: @index-sticky;
     width: 100%;

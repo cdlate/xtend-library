@@ -170,7 +170,6 @@ class Scroll extends Xt.Toggle {
           el.style.width = tr.offsetWidth + 'px'
         }
         // position
-        // @TODO scene
         self.detail.distance = Xt.windowPercent(options.distance)
         self.detail.trigger = Xt.windowPercent(options.trigger)
         self.detail.start = self.detail.startReal = elTop - windowHeight + Xt.windowPercent(options.start) + self.detail.distance
@@ -213,6 +212,10 @@ class Scroll extends Xt.Toggle {
                 Xt.dataStorage.set(el, self.componentNamespace + 'OnTot', currentsOn.length)
                 currentOn++
                 self.eventOn(el, true)
+                // sticky position
+                if (options.sticky) {
+                  el.style.top = elTop - scrollTop + 'px'
+                }
               })
             )
           }
@@ -239,6 +242,10 @@ class Scroll extends Xt.Toggle {
                 Xt.dataStorage.set(el, self.componentNamespace + 'OffTot', currentsOff.length)
                 currentOff++
                 self.eventOff(el, true)
+                // sticky position
+                if (options.sticky) {
+                  el.style.top = ''
+                }
               })
             )
           }
@@ -301,16 +308,15 @@ Scroll.optionsDefault = {
   min: 0,
   max: 'Infinity',
   instant: true,
-  class: 'fade',
+  class: 'fade fade-scroll',
   classIn: 'fade-in',
   classOut: 'fade-out',
   aria: false,
   // scroll only
-  // @TODO scene
   sticky: false,
   distance: '20%',
-  trigger: '100%',
-  start: '100%',
+  trigger: '50%',
+  start: '50%',
   end: false,
   fallback: 100,
 }

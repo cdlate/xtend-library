@@ -11,7 +11,7 @@ Xt.mount.push({
       distance: 0,
       trigger: 0,
       start: 0,
-      end: '100%',
+      end: false,
     })
 
     // change

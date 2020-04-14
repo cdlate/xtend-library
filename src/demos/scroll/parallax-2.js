@@ -3,15 +3,15 @@ import 'xtend-library/src/extensions/scroll/scroll.js'
 import gsap from 'gsap'
 
 Xt.mount.push({
-  matches: '.demo--parallax-2',
+  matches: '.demo--parallax-0',
   mount: object => {
     // init
 
     let self = new Xt.Scroll(object, {
       distance: 0,
-      trigger: '50%',
-      start: '50%',
-      end: '100%',
+      trigger: '100%',
+      start: '100%',
+      end: false,
     })
 
     // change

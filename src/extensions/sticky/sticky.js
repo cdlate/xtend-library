@@ -425,7 +425,9 @@ Sticky.optionsDefault = {
   min: 0,
   max: 'Infinity',
   instant: true,
-  class: 'active active-sticky',
+  class: 'fade fade-sticky',
+  classIn: 'fade-in',
+  classOut: 'fade-out',
   aria: false,
   // sticky only
   sticky: true,

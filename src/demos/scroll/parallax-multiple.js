@@ -1,6 +1,5 @@
 import { Xt } from 'xtend-library'
 import 'xtend-library/src/extensions/scroll/scroll.js'
-import gsap from 'gsap'
 
 Xt.mount.push({
   matches: '.demo--parallax-multiple',
@@ -10,18 +9,9 @@ Xt.mount.push({
     let self = new Xt.Scroll(object, {
       distance: 0,
       sticky: 'absolute',
+      trigger: '50%',
+      start: '100%',
     })
-
-    // change
-
-    const eventChange = e => {
-      const element = e.target
-      gsap.set(element, { opacity: self.detail.ratio })
-    }
-
-    for (const el of self.elements) {
-      el.addEventListener('change.xt', eventChange)
-    }
 
     // unmount
 
