@@ -37,7 +37,7 @@ With this setup you can **fork** css and js files inside `./dist/xtend-library` 
 You need to import the **reset** file as first import:
 
 ```less
-@import '~xtend-library/src/xtend-reset.less'; // always first loaded
+@import '~xtend-library/src/xtend-reset.less';
 ```
 
 Then you can import the **components you need** as described in the docs:

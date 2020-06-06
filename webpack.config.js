@@ -2,7 +2,7 @@ const path = require('path')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-require('./build/less.js')
+require('./build/css.js')
 require('./build/js.js')
 
 module.exports = {
@@ -10,9 +10,9 @@ module.exports = {
   performance: { hints: false },
   context: path.resolve(__dirname, ''),
   entry: {
-    'dist/xtend-core': ['./dist/xtend-core.js', './dist/xtend-core.less'],
-    'dist/xtend-core-extensions': ['./dist/xtend-core-extensions.js', './dist/xtend-core-extensions.less'],
-    'dist/xtend-core-extensions-addons': ['./dist/xtend-core-extensions-addons.js', './dist/xtend-core-extensions-addons.less'],
+    'dist/xtend-core': ['./dist/xtend-core.js', './dist/xtend-core.css'],
+    'dist/xtend-core-extensions': ['./dist/xtend-core-extensions.js', './dist/xtend-core-extensions.css'],
+    'dist/xtend-core-extensions-addons': ['./dist/xtend-core-extensions-addons.js', './dist/xtend-core-extensions-addons.css'],
   },
   output: {
     filename: '[name].min.js',
@@ -44,7 +44,7 @@ module.exports = {
         },
       },
       {
-        test: /\.less$/,
+        test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
           {

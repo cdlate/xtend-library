@@ -2,12 +2,12 @@
  * import
  */
 
-@import '~xtend-library/src/xtend-reset.css'; // always first loaded
+@import '~xtend-library/src/xtend-reset.css';
 
 /*
 // xtend
 
-@import '~xtend-library/src/xtend-reset.less'; // always first loaded
+@import '~xtend-library/src/xtend-reset.less';
 @import '~xtend-library/src/xtend-core.less';
 @import '~xtend-library/src/xtend-addons.less';
 @import '~xtend-library/src/xtend-extensions.less';
