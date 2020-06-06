@@ -55,10 +55,7 @@ module.exports = {
             },
           },
           {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-            },
+            loader: 'postcss-loader',
           },
         ],
       },

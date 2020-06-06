@@ -1,15 +1,72 @@
 /**
+ * postcss tests
+ */
+
+ :root {
+  --primary: red;
+}
+
+$media-sm: 700px;
+@custom-media --max-sm (max-width: calc($media-sm - 1px));
+@custom-media --min-sm (min-width: $media-sm);
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:--heading {
+  @media (--max-sm) {
+    color: var(--primary);
+  }
+  @media (--min-sm) {
+    background: color-mod(var(--primary) a(50%));
+  }
+}
+
+@define-mixin active {
+  &:active, &.active {
+    @mixin-content;
+  }
+}
+
+.btn {
+  @extend .btn-setup;
+}
+
+$padding: 40px;
+
+.btn-setup {
+  padding: $padding;
+}
+
+.btn-setup {
+  color: var(--primary);
+  @mixin active {
+    color: white;
+    @media (--sm) {
+      transform: scale(2);
+    }
+  }
+  @media (--sm) {
+    background: var(--primary);
+    background: color-mod(var(--primary) alpha(50%));
+  }
+}
+
+.btn-setup {
+  text-decoration: underline;
+}
+
+/**
  * reset
  */
 
 html, body {
   height: 100%;
-  touch-action: manipulation; // disable double-tap
+  touch-action: manipulation; /* disable double-tap */
 }
 
 html {
   box-sizing: border-box;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // disable tap highlight
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* disable tap highlight */
 }
 
 body {
@@ -22,7 +79,7 @@ body {
 }
 
 a img {
-  // ie10 remove border
+  /* ie10 remove border */
   border: 0;
   outline: 0;
 }
@@ -30,12 +87,12 @@ a img {
 a, button {
   cursor: pointer;
   text-decoration: none;
-  // enables pointer events
+  /* enables pointer events */
   display: inline-block;
 }
 
 button {
-  .reset-text();
+  /* .reset-text(); */
   border: 0;
   padding: 0;
   background: transparent;
@@ -44,7 +101,7 @@ button {
 
 img {
   display: inline-block;
-  vertical-align: top; // fix inline-block spacing
+  vertical-align: top; /* fix inline-block spacing */
 }
 
 svg {
@@ -82,7 +139,7 @@ label[for] {
 }
 
 input:not([type="checkbox"]):not([type="radio"]), textarea {
-  // remove shadow
+  /* remove shadow */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -90,7 +147,7 @@ input:not([type="checkbox"]):not([type="radio"]), textarea {
 
 select {
   cursor: pointer;
-  // remove arrow
+  /* remove arrow */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -100,12 +157,12 @@ select {
 }
 
 button, input, select, textarea {
-  // safari margin
+  /* safari margin */
   margin: 0;
 }
 
 input, select, textarea {
-  // autofill
+  /* autofill */
   &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus {
     transition-property: background-color, color;
     transition-delay: 10000000s;
