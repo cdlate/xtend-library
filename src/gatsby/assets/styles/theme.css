@@ -1,7 +1,24 @@
 /**
- * import
+ * tailwind
  */
 
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+/**
+ * xtend
+ */
+
+@import "test";
+
+body {
+  background: #000000;
+}
+
+/*
 // xtend
 
 @import '~xtend-library/src/xtend-reset.less'; // always first loaded
@@ -21,3 +38,4 @@
 @import '_footer.less';
 @import '_main.less';
 @import '_demo.less';
+*/

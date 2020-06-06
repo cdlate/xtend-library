@@ -21,7 +21,7 @@ import 'xtend-library/src/xtend-demos.js'
 import { populateBlock } from 'assets/scripts/demo.js'
 import { makeDocument } from 'assets/scripts/theme.js'
 
-import 'assets/styles/theme.less'
+import 'assets/styles/theme.css'
 
 if (module.hot) {
   module.hot.addStatusHandler(status => {

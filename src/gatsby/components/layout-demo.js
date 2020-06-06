@@ -14,7 +14,7 @@ import 'xtend-library/src/xtend-demos.js'
 import { makeDocument } from 'assets/scripts/theme.js'
 import ResizeSensor from 'assets/scripts/ResizeSensor.js'
 
-import 'assets/styles/theme.less'
+import 'assets/styles/theme.css'
 
 if (typeof window !== 'undefined' && window.self === window.top) {
   if (module.hot) {
