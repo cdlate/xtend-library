@@ -1,12 +1,21 @@
 const path = require('path')
 const fs = require('fs')
+const postcsImport = require('postcss-import')
+const postcssMixins = require('postcss-mixins')
+const postcssNesting = require('postcss-nesting')
+const postcssSimpleVars = require('postcss-simple-vars')
+const postcssExtendRule = require('postcss-extend-rule')
+const postcssObjectFitImages = require('postcss-object-fit-images')
+const postcssCalc = require('postcss-calc')
+const postcssPresetEnv = require('postcss-preset-env')
+const autoprefixer = require('autoprefixer')
 
 module.exports = {
   parser: 'postcss-scss',
   map: true,
-  plugins: {
-    'postcss-import': {
-      // resolve xtend-library css
+  plugins: [
+    postcsImport({
+      // resolve xtend-library
       resolve: function(id) {
         const arr = id.split('/')
         const first = arr[0]
@@ -21,21 +30,21 @@ module.exports = {
           }
         }
       },
-    },
-    'postcss-mixins': {},
-    'postcss-nesting': {},
-    'postcss-simple-vars': {},
-    'postcss-extend-rule': {},
-    'postcss-object-fit-images': {},
-    'postcss-calc': {
+    }),
+    postcssMixins(),
+    postcssNesting(),
+    postcssSimpleVars(),
+    postcssExtendRule(),
+    postcssObjectFitImages(),
+    postcssCalc({
       mediaQueries: true,
-    },
-    'postcss-preset-env': {
+    }),
+    postcssPresetEnv({
       stage: 0,
       features: {
         'color-mod-function': { unresolved: 'warn' },
       },
-    },
-    autoprefixer: {},
-  },
+    }),
+    autoprefixer(),
+  ],
 }
