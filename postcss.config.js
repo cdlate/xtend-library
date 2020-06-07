@@ -2,7 +2,6 @@ const path = require('path')
 const fs = require('fs')
 const postcsImport = require('postcss-import')
 const postcssMixins = require('postcss-mixins')
-const postcssNesting = require('postcss-nesting')
 const postcssSimpleVars = require('postcss-simple-vars')
 const postcssExtendRule = require('postcss-extend-rule')
 const postcssObjectFitImages = require('postcss-object-fit-images')
@@ -32,7 +31,6 @@ module.exports = {
       },
     }),
     postcssMixins(),
-    postcssNesting(),
     postcssSimpleVars(),
     postcssExtendRule(),
     postcssObjectFitImages(),

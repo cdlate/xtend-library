@@ -43,15 +43,13 @@ $padding-small: 0px;
 }
 
 .btn {
-  @extend .btn-setup;
-  /*@extend .btn-setup.nested; // PROBLEMA NON FUNZIONA*/
+  // PROBLEMI con @extend https://github.com/csstools/postcss-extend-rule/issues
+  @extend .btn-setup !important;
+  @extend .btn-color.nested;
 }
 
 .btn-setup {
   background: var(--primary);
-  .nested {
-    color: var(--primary);
-  }
   @mixin active {
     color: black;
     @media (--min-sm) {
@@ -60,6 +58,12 @@ $padding-small: 0px;
   }
   @media (--min-sm) {
     background: color-mod(var(--primary) alpha(50%));
+  }
+}
+
+.btn-color {
+  &.nested {
+    color: var(--primary);
   }
 }
 
