@@ -13,7 +13,7 @@ module.exports = {
 		'--max-xl': '(max-width: calc(1300px - 1px))'
 	},
 	customProperties: {
-		'--test': '#ffffff',
+		'--test': '#ff0000',
 		'--primary': '#7567f8',
 		'--white': '#fff',
 		'--black': '#000',

@@ -169,10 +169,10 @@ html:not(.xt-focus), html.xt-focus--disable {
 @custom-media --sm (max-width: 30em);
 
 .btn {
-  @extend .btn--primary;
+  @extend .btn--color, .btn--test.nested;
 }
 
-.btn--primary {
+.btn--color {
   color: var(--primary);
   @mixin active {
     color: white;
@@ -181,5 +181,11 @@ html:not(.xt-focus), html.xt-focus--disable {
       background: color-mod(var(--primary) a(50%));
       transform: translateX(10px);
     }
+  }
+}
+
+.btn--test {
+  &.nested {
+    text-decoration: underline;
   }
 }
