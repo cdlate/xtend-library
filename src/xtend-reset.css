@@ -38,14 +38,35 @@ $padding-small: 0px;
   padding: $padding-small;
 }
 
-.btn-setup {
-  @mixin btn-small;
+.btn-test {
+  &.nested {
+    text-decoration: underline;
+  }
 }
 
 .btn {
-  // PROBLEMI con @extend https://github.com/csstools/postcss-extend-rule/issues
-  @extend .btn-setup !important;
-  @extend .btn-color.nested;
+  @mixin btn-small;
+  // ONLY ONE @extend
+  @media (--min-sm) {
+    @extend .btn-color, .btn-test.nested;
+  }
+}
+
+.btn {
+  // ONLY ONE @extend for selector
+  @extend .btn-setup;
+}
+
+.btn-color {
+  color: var(--primary);
+  @mixin active {
+    color: white;
+    @media (--sm) {
+      background: var(--primary);
+      background: color-mod(var(--primary) a(50%));
+      transform: translateX(10px);
+    }
+  }
 }
 
 .btn-setup {
@@ -58,12 +79,6 @@ $padding-small: 0px;
   }
   @media (--min-sm) {
     background: color-mod(var(--primary) alpha(50%));
-  }
-}
-
-.btn-color {
-  &.nested {
-    color: var(--primary);
   }
 }
 
