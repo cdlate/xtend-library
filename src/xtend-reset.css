@@ -45,15 +45,16 @@ $padding-small: 0px;
 }
 
 .btn {
-  @mixin btn-small;
-  // ONLY ONE @extend
+  // PROBLEM !important doesnt work in mixin
+  @mixin btn-small !important;
   @media (--min-sm) {
+    // PROBLEM ONLY ONE @extend for selector
+    // PROBLEM !important doesnt work in extend
     @extend .btn-color, .btn-test.nested;
   }
 }
 
 .btn {
-  // ONLY ONE @extend for selector
   @extend .btn-setup;
 }
 
