@@ -5,6 +5,7 @@
 const fs = require('fs')
 const path = require('path')
 const version = JSON.parse(fs.readFileSync('package.json').toString()).version
+const CleanCSSPlugin = require('less-plugin-clean-css');
 
 module.exports = {
   siteMetadata: {
@@ -19,7 +20,18 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
-    'gatsby-plugin-less',
+    {
+      resolve: `gatsby-plugin-less`,
+      options: {
+        loaderOptions: {
+          appendData: `@env: ${process.env.NODE_ENV};`,
+        },
+        lessOptions: {
+          strictMath: true,
+          plugins: [new CleanCSSPlugin({ advanced: true })],
+        },
+      },
+    },
     // manifest
     {
       resolve: 'gatsby-plugin-manifest',

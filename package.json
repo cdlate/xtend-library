@@ -31,6 +31,7 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.6.11",
     "gsap": "^3.2.0",
+    "less-plugin-clean-css": "^1.5.1",
     "regenerator-runtime": "^0.13.3",
     "relaxed-json": "^1.0.3",
     "url-polyfill": "^1.1.8"

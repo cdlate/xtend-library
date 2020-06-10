@@ -21,3 +21,9 @@
 @import '_footer.less';
 @import '_main.less';
 @import '_demo.less';
+
+body {
+  &:before {
+    content: "@{env}" !important;
+  }
+}
