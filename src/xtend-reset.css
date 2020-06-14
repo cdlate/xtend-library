@@ -8,6 +8,9 @@
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
+@custom-media --max-sm (max-width: calc(699px));
+@custom-media --min-sm (min-width: 700px);
+
 :--heading {
   @media (--max-sm) {
     color: var(--primary);
@@ -17,123 +20,28 @@
   }
 }
 
-/**
- * sass
- */
-
-$media-sm: 700px;
-@custom-media --max-sm (max-width: calc($media-sm - 1px));
-@custom-media --min-sm (min-width: $media-sm);
-
-// USAGE: @mixin active {}
 @define-mixin active {
   &:active, &.active {
     @mixin-content;
   }
 }
 
-// PROBLEM !important doesnt work in mixin
-// PROBLEM one mixin only!
-// USAGE: @mixin btn-small !important;
-
-$padding-small: 0px;
-
-@define-mixin btn-small {
-  padding: $padding-small;
+:root {
+  --padding-small: 40px;
 }
 
 @define-mixin btn-small {
-  $padding-small: 40px;
-  padding: $padding-small;
+  padding: var(--padding-small);
 }
 
 .btn {
-  @mixin btn-small;
-  @mixin btn-small !important;
-}
-
-/**
- * @extend
- */
-
-.btn {
-  @extend .btn-setup;
-}
-
-.btn {
-  @media (--min-sm) {
-    // PROBLEM ONLY ONE @extend for selector
-    // PROBLEM !important doesnt work in extend
-    @extend .btn-color, .btn-test.nested;
-  }
-}
-
-.btn-setup {
-  background: var(--primary);
-  &:active, &.active {
-    color: black;
-    @media (--min-sm) {
-      transform: scale(2);
-    }
+  @mixin active {
+    @mixin btn-small;
   }
   @media (--min-sm) {
-    background: color-mod(var(--primary) alpha(50%));
+    @mixin btn-small;
   }
 }
-
-.btn-color {
-  color: var(--primary);
-  &:active, &.active {
-    color: white;
-  }
-}
-
-.btn-color {
-  &:active, &.active {
-    @media (--sm) {
-      background: var(--primary);
-      background: color-mod(var(--primary) a(50%));
-      transform: translateX(10px);
-    }
-  }
-}
-
-.btn-test {
-  &.nested {
-    text-decoration: underline;
-  }
-}
-
-/**
- * less mixins
- */
-
- /*
-.overlay {
-  .overlay-setup(black, var(--primary));
-}
-
-.overlay {
-  //@media (--min-sm) {
-    // PROBLEM ONLY ONE @extend for selector
-    // PROBLEM !important doesnt work in extend
-   .overlay-test.nested();
-  //}
-}
-
-.overlay-setup(@background, @color) {
-  color: @color;
-  &:active, &.active {
-    background: @background;
-  }
-}
-
-.overlay-test {
-  &.nested {
-    text-decoration: underline;
-  }
-}
-*/
 
 /**
  * reset

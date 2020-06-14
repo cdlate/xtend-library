@@ -3,9 +3,6 @@ const fs = require('fs')
 const postcsImport = require('postcss-import')
 const postcssMixins = require('postcss-mixins')
 const postcssNesting = require('postcss-nesting')
-const postcssSimpleVars = require('postcss-simple-vars')
-const postcssExtendRule = require('postcss-extend-rule')
-const postcssObjectFitImages = require('postcss-object-fit-images')
 const postcssCalc = require('postcss-calc')
 const postcssPresetEnv = require('postcss-preset-env')
 const autoprefixer = require('autoprefixer')
@@ -33,9 +30,6 @@ module.exports = {
     }),
     postcssMixins(),
     postcssNesting(),
-    postcssSimpleVars(),
-    postcssExtendRule(),
-    postcssObjectFitImages(),
     postcssCalc({
       mediaQueries: true,
     }),
