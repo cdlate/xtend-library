@@ -2,13 +2,9 @@
  * postcss tests
  */
 
- :root {
+:root {
   --primary: red;
 }
-
-$media-sm: 700px;
-@custom-media --max-sm (max-width: calc($media-sm - 1px));
-@custom-media --min-sm (min-width: $media-sm);
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
@@ -21,11 +17,24 @@ $media-sm: 700px;
   }
 }
 
+/**
+ * sass
+ */
+
+$media-sm: 700px;
+@custom-media --max-sm (max-width: calc($media-sm - 1px));
+@custom-media --min-sm (min-width: $media-sm);
+
+// USAGE: @mixin active {}
 @define-mixin active {
   &:active, &.active {
     @mixin-content;
   }
 }
+
+// PROBLEM !important doesnt work in mixin
+// PROBLEM one mixin only!
+// USAGE: @mixin btn-small !important;
 
 $padding-small: 0px;
 
@@ -38,15 +47,20 @@ $padding-small: 0px;
   padding: $padding-small;
 }
 
-.btn-test {
-  &.nested {
-    text-decoration: underline;
-  }
+.btn {
+  @mixin btn-small;
+  @mixin btn-small !important;
+}
+
+/**
+ * @extend
+ */
+
+.btn {
+  @extend .btn-setup;
 }
 
 .btn {
-  // PROBLEM !important doesnt work in mixin
-  @mixin btn-small !important;
   @media (--min-sm) {
     // PROBLEM ONLY ONE @extend for selector
     // PROBLEM !important doesnt work in extend
@@ -54,25 +68,9 @@ $padding-small: 0px;
   }
 }
 
-.btn {
-  @extend .btn-setup;
-}
-
-.btn-color {
-  color: var(--primary);
-  @mixin active {
-    color: white;
-    @media (--sm) {
-      background: var(--primary);
-      background: color-mod(var(--primary) a(50%));
-      transform: translateX(10px);
-    }
-  }
-}
-
 .btn-setup {
   background: var(--primary);
-  @mixin active {
+  &:active, &.active {
     color: black;
     @media (--min-sm) {
       transform: scale(2);
@@ -82,6 +80,60 @@ $padding-small: 0px;
     background: color-mod(var(--primary) alpha(50%));
   }
 }
+
+.btn-color {
+  color: var(--primary);
+  &:active, &.active {
+    color: white;
+  }
+}
+
+.btn-color {
+  &:active, &.active {
+    @media (--sm) {
+      background: var(--primary);
+      background: color-mod(var(--primary) a(50%));
+      transform: translateX(10px);
+    }
+  }
+}
+
+.btn-test {
+  &.nested {
+    text-decoration: underline;
+  }
+}
+
+/**
+ * less mixins
+ */
+
+ /*
+.overlay {
+  .overlay-setup(black, var(--primary));
+}
+
+.overlay {
+  //@media (--min-sm) {
+    // PROBLEM ONLY ONE @extend for selector
+    // PROBLEM !important doesnt work in extend
+   .overlay-test.nested();
+  //}
+}
+
+.overlay-setup(@background, @color) {
+  color: @color;
+  &:active, &.active {
+    background: @background;
+  }
+}
+
+.overlay-test {
+  &.nested {
+    text-decoration: underline;
+  }
+}
+*/
 
 /**
  * reset
