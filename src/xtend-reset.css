@@ -31,7 +31,7 @@
 }
 
 @define-mixin btn-small {
-  padding: var(--padding-small);
+  padding: 200px;
 }
 
 .btn {
@@ -41,6 +41,17 @@
   @media (--min-sm) {
     @mixin btn-small;
   }
+}
+
+// custom media override works
+
+@custom-media --max-sm (max-width: calc(499px));
+@custom-media --min-sm (min-width: 500px);
+
+// mixin override doesn't works
+
+@define-mixin btn-small {
+  padding: var(--padding-small);
 }
 
 /**
