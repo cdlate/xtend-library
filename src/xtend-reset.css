@@ -6,6 +6,13 @@
   --primary: red;
 }
 
+body {
+  // preset-env nesting needs &
+  & > * {
+    color: var(--primary)
+  }
+}
+
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
 @custom-media --max-sm (max-width: calc(699px));
