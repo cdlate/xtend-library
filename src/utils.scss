@@ -28,6 +28,8 @@
 }
 
 body {
+  // mixin override doesn't work it uses the mixin before not the after this include
   @include test;
+  // extend override doesn't work it extends both placeholders
   @extend %test;
 }

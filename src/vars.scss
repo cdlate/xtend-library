@@ -9,8 +9,3 @@
     content: 'extend vars'
   }
 }
-
-body {
-  @include test;
-  @extend %test;
-}
