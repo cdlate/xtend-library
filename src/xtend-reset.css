@@ -55,8 +55,12 @@ body {
   }
 }
 
-// extend
+@define-mixin btn-small {
+  padding: 10px;
+}
 
+// extend
+/*
 .btn-setup {
   padding: 100px;
 }
@@ -69,7 +73,7 @@ body {
 .btn-setup {
   padding: 20px;
 }
-
+*/
 
 // custom media override works
 
