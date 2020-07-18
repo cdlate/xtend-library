@@ -1,0 +1,16 @@
+@mixin text-reset() {
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+
+@mixin full() {
+  max-width: none;
+  width: 100%;
+  height: auto;
+}

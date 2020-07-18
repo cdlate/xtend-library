@@ -1,0 +1,23 @@
+/**
+ * Xtend (https://getxtend.com/)
+ * @copyright (c) 2017 - 2020 Riccardo Caroli
+ * @license MIT (https://github.com/minimit/xtend-library/blob/master/LICENSE)
+ */
+
+// setup
+
+@import 'xtend-library/src/vars';
+@import 'xtend-library/src/utils';
+@import 'xtend-library/src/reset';
+
+// core
+
+@import 'xtend-library/src/core';
+
+// extensions
+
+@import 'xtend-library/src/extensions';
+
+// addons
+
+@import 'xtend-library/src/addons';

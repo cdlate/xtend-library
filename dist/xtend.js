@@ -6,9 +6,9 @@
 
 import 'xtend-library/src/polyfill.js'
 import { Xt } from 'xtend-library'
-import 'xtend-library/src/xtend-core.js'
-import 'xtend-library/src/xtend-extensions.js'
-import 'xtend-library/src/xtend-addons.js'
+import 'xtend-library/src/core.js'
+import 'xtend-library/src/extensions.js'
+import 'xtend-library/src/addons.js'
 
 // export UMD
 /* eslint-disable */

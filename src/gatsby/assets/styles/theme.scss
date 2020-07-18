@@ -1,0 +1,34 @@
+/**
+ * xtend
+ */
+
+// setup
+
+@import 'xtend-library/src/vars';
+@import 'xtend-library/src/utils';
+@import 'xtend-library/src/reset';
+
+// core
+
+@import 'xtend-library/src/core';
+
+// extensions
+
+@import 'xtend-library/src/extensions';
+
+// addons
+
+@import 'xtend-library/src/addons';
+
+/**
+ * theme
+ */
+
+@import 'icons-theme/style.css';
+/*
+@import '_shared';
+@import '_header';
+@import '_footer';
+@import '_main';
+@import '_demo';
+*/

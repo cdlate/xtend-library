@@ -20,7 +20,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
-    'gatsby-plugin-less',
+    'gatsby-plugin-sass',
     // manifest
     {
       resolve: 'gatsby-plugin-manifest',
@@ -46,7 +46,7 @@ module.exports = {
         aliases: {
           assets: './src/gatsby/assets',
           components: './src/gatsby/components',
-          // resolve xtend-library import js and less
+          // resolve xtend-library import js and css
           'xtend-library': path.resolve(__dirname, './'),
         },
       },
