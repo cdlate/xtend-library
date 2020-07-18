@@ -11,6 +11,9 @@ body {
   & > * {
     color: var(--primary)
   }
+  > * {
+      color: purple;
+  }
 }
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
@@ -26,6 +29,8 @@ body {
     background: color-mod(var(--primary) a(50%));
   }
 }
+
+// mixin
 
 @define-mixin active {
   &:active, &.active {
@@ -49,6 +54,22 @@ body {
     @mixin btn-small;
   }
 }
+
+// extend
+
+.btn-setup {
+  padding: 100px;
+}
+
+.btn {
+   // it applies both .btn-setup
+   @extend .btn-setup;
+}
+
+.btn-setup {
+  padding: 20px;
+}
+
 
 // custom media override works
 
