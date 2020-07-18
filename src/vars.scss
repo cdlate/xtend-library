@@ -1,0 +1,16 @@
+@mixin test() {
+  &:before {
+    content: 'mixin vars'
+  }
+}
+
+%test {
+  &:before {
+    content: 'extend vars'
+  }
+}
+
+body {
+  @include test;
+  @extend %test;
+}

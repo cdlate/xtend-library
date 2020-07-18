@@ -10,6 +10,5 @@ if (typeof window !== 'undefined') {
   require('xtend-library/src/addons/structure/google-locator.js')
   require('xtend-library/src/addons/structure/infinite-scroll.js')
   require('xtend-library/src/addons/structure/jump-to-content.js')
-  require('xtend-library/src/addons/test.js')
   require('xtend-library/src/addons/toggle/multilevel.js')
 }
