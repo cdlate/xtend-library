@@ -1,4 +1,3 @@
-
 .btn {
   @apply font-bold;
   @apply py-2;
@@ -7,15 +6,17 @@
   @apply test;
 }
 
+/*
+if i have 2 .test it gives error
+`@apply` cannot be used with .test because .test is included in multiple rulesets.
+*/
+
 .test {
   background: #ff0000;
 }
 
 /*
-// @BUG no multiple ruleset @apply https://github.com/tailwindcss/tailwindcss/pull/209
-.test {
-  color: #ffffff;
-}
+this doesn't work @apply test.color;
 */
 
 .test.color {
