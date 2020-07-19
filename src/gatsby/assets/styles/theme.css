@@ -23,7 +23,9 @@ body {
   @apply py-2;
   @apply px-4;
   @apply rounded;
-  @apply test;
+  @screen sm {
+    @apply test;
+  }
 }
 
 /*

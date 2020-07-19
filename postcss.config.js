@@ -1,11 +1,12 @@
 const postcssImport = require(`postcss-import`)
 const tailwindcss = require(`tailwindcss`)
+const postcssNesting = require('postcss-nesting')
 const autoprefixer = require(`autoprefixer`)
 
 module.exports = {
   //parser: 'postcss-scss',
   map: true,
-  plugins: [postcssImport(), tailwindcss(), autoprefixer()],
+  plugins: [postcssImport(), tailwindcss(), postcssNesting(), autoprefixer()],
 }
 
 /*
