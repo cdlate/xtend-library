@@ -18,6 +18,14 @@ body {
   background: #000000;
 }
 
+.btn {
+  @apply font-bold;
+  @apply py-2;
+  @apply px-4;
+  @apply rounded;
+  @apply test;
+}
+
 /*
 // xtend
 
